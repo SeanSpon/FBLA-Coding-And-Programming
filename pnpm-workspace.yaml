@@ -1,0 +1,5 @@
+packages:
+  - 'apps/*'
+  - 'packages/*'
+  - 'byte-boost/apps/*'
+  - 'byte-boost/packages/*'
