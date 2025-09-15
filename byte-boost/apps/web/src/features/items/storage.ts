@@ -5,9 +5,7 @@ export function loadItems(): Item[] {
   try {
     const raw = localStorage.getItem(KEY)
     return raw ? (JSON.parse(raw) as Item[]) : []
-  } catch {
-    return []
-  }
+  } catch { return [] }
 }
 
 export function saveItems(items: Item[]) {

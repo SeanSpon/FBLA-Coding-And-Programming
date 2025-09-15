@@ -211,3 +211,44 @@ Design notes (why we chose these tools; data model diagram)
 Screenshots/GIFs
 
 Short demo script (exact clicks we’ll do)
+
+## Live Demo
+[https://vercel.com/seanspons-projects/fbla-coding-and-programming-web](https://vercel.com/seanspons-projects/fbla-coding-and-programming-web)
+
+## Overview
+A modern, minimal React + Vite web app built to satisfy the FBLA Coding & Programming rubric. Features include:
+- Clean, responsive UI
+- CRUD feature with localStorage persistence
+- Automated tests (unit + UI)
+- CI/CD with GitHub Actions
+- Deployed on Vercel
+
+## Quickstart
+```sh
+cd byte-boost/apps/web
+pnpm install
+pnpm dev
+```
+
+## Scripts
+- `pnpm dev` — start local dev server
+- `pnpm build` — build for production
+- `pnpm preview` — preview production build
+- `pnpm test` — run tests
+- `pnpm lint` — run ESLint
+- `pnpm format` — run Prettier
+
+## Project Structure
+- `src/app/` — layout, routes, nav
+- `src/features/items/` — main feature (CRUD + persistence)
+- `src/pages/` — Home, Items, About
+- `src/styles.css` — minimal utility styles
+- `src/test/` — test setup
+
+## Docs
+- [`docs/REQUIREMENTS.md`](docs/REQUIREMENTS.md) — rubric mapping
+- [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) — folder layout & data flow
+- [`docs/PRESENTATION.md`](docs/PRESENTATION.md) — demo script
+
+---
+Built with pnpm · Vite · React · Vitest · GitHub Actions · Vercel
