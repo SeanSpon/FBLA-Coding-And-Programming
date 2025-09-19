@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
     <footer className="bg-cream border-t">
-      <div className="container py-12 px-4">
+      <div className="container py-12 px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
             <h3 className="font-bold mb-4">About</h3>
