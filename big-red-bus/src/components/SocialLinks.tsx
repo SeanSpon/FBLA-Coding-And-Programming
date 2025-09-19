@@ -1,5 +1,3 @@
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Reveal } from "@/components/Reveal";
 
 
@@ -10,32 +8,9 @@ export function SocialLinks() {
         <section className="text-center">
           <h2 className="text-3xl font-heading mb-4">Follow the Big Red Bus</h2>
           <p className="text-warm-gray max-w-2xl mx-auto mb-8">
-            See our latest updates, events, and stories on Instagram and TikTok.
+            See our latest updates, events, and stories on TikTok.
           </p>
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {/* Instagram Embed */}
-            <div className="bg-white rounded-lg shadow p-4 flex flex-col items-center">
-              <h3 className="font-semibold mb-2">Instagram</h3>
-              <iframe
-                src="https://www.instagram.com/michaelarobards/embed/"
-                title="Instagram"
-                className="w-full max-w-xs aspect-[1/1.3] border rounded"
-                allowTransparency={true}
-                frameBorder={0}
-                scrolling="no"
-                allow="encrypted-media"
-                loading="lazy"
-              />
-              <a
-                href="https://www.instagram.com/michaelarobards/?hl=en"
-                target="_blank"
-                rel="noreferrer"
-                className="mt-2 text-primary underline text-sm"
-              >
-                @michaelarobards
-              </a>
-            </div>
-            {/* TikTok Embed */}
+          <div className="max-w-xl mx-auto">
             <div className="bg-white rounded-lg shadow p-4 flex flex-col items-center">
               <h3 className="font-semibold mb-2">TikTok</h3>
               <iframe
