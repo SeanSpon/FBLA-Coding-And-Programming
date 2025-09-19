@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Reveal } from "@/components/Reveal";
+import { SectionDivider } from "@/components/SectionDivider";
 
 export default function Programs() {
   return (
@@ -14,9 +15,11 @@ export default function Programs() {
         </section>
       </Reveal>
 
+      <SectionDivider />
+
       {/* Community Events */}
       <Reveal>
-        <section className="grid md:grid-cols-2 gap-16 items-center">
+        <section className="grid md:grid-cols-2 gap-16 items-center max-w-5xl mx-auto">
           <div className="bg-blush rounded-lg aspect-square"></div>
           <div>
             <h2 className="text-3xl font-heading mb-4">Community Events</h2>
@@ -40,9 +43,11 @@ export default function Programs() {
         </section>
       </Reveal>
 
+      <SectionDivider />
+
       {/* School Outreach */}
       <Reveal>
-        <section className="grid md:grid-cols-2 gap-16 items-center">
+        <section className="grid md:grid-cols-2 gap-16 items-center max-w-5xl mx-auto">
           <div className="order-last md:order-first">
             <h2 className="text-3xl font-heading mb-4">School Outreach</h2>
             <p className="text-warm-gray mb-6">
@@ -66,9 +71,11 @@ export default function Programs() {
         </section>
       </Reveal>
 
+      <SectionDivider />
+
       {/* Resource Hub */}
       <Reveal>
-        <section className="grid md:grid-cols-2 gap-16 items-center">
+        <section className="grid md:grid-cols-2 gap-16 items-center max-w-5xl mx-auto">
           <div className="bg-sage rounded-lg aspect-square"></div>
           <div>
             <h2 className="text-3xl font-heading mb-4">Resource Hub</h2>
@@ -89,6 +96,17 @@ export default function Programs() {
             </Card>
             <Button className="mt-6">Explore the Hub</Button>
           </div>
+        </section>
+      </Reveal>
+
+      <SectionDivider />
+
+      <Reveal>
+        <section className="text-center">
+          <h2 className="text-2xl font-heading mb-3">About Our Team</h2>
+          <p className="text-warm-gray max-w-3xl mx-auto">
+            Built by Trinity High School's FBLA Coding & Programming team, this programs portal showcases our commitment to community impact through technology.
+          </p>
         </section>
       </Reveal>
     </div>

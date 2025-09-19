@@ -13,6 +13,7 @@ import { partners } from "@/lib/data/partners";
 import { stories } from "@/lib/data/stories";
 import { Metric } from "@/components/Metric";
 import { Reveal } from "@/components/Reveal";
+import { SectionDivider } from "@/components/SectionDivider";
 
 export default function Home() {
   return (
@@ -39,6 +40,8 @@ export default function Home() {
           </div>
         </Reveal>
       </section>
+
+      <SectionDivider />
 
       {/* Mission Snapshot */}
       <Reveal>
@@ -76,6 +79,8 @@ export default function Home() {
         </section>
       </Reveal>
 
+  <SectionDivider />
+
       {/* Featured Partners */}
       <Reveal>
         <section className="text-center">
@@ -96,6 +101,8 @@ export default function Home() {
         </section>
       </Reveal>
 
+      <SectionDivider />
+
       {/* Impact Highlights */}
       <Reveal>
         <section>
@@ -108,10 +115,12 @@ export default function Home() {
         </section>
       </Reveal>
 
+      <SectionDivider />
+
       {/* Programs Preview */}
       <Reveal>
         <section>
-          <div className="grid md:grid-cols-2 gap-16 items-center">
+          <div className="grid md:grid-cols-2 gap-16 items-center max-w-5xl mx-auto">
             <div>
               <h2 className="text-3xl font-heading mb-4">Our Programs</h2>
               <p className="text-warm-gray mb-8">
@@ -139,6 +148,32 @@ export default function Home() {
             <div>
               {/* Placeholder for an illustration */}
               <div className="bg-sage rounded-lg aspect-square"></div>
+            </div>
+          </div>
+        </section>
+      </Reveal>
+
+      <SectionDivider />
+
+      {/* About FBLA/Trinity */}
+      <Reveal>
+        <section className="text-center">
+          <h2 className="text-3xl font-heading mb-4">Project FBLA Coding & Programming</h2>
+          <p className="text-warm-gray max-w-3xl mx-auto">
+            This site was designed and implemented by the Trinity High School FBLA Coding & Programming team as part of the FBLA competition. We focus on building practical, community-centered technology that supports awareness and access to resources.
+          </p>
+          <div className="mt-8 grid md:grid-cols-3 gap-6 text-left max-w-5xl mx-auto">
+            <div>
+              <h3 className="font-semibold mb-2">About FBLA</h3>
+              <p className="text-warm-gray">Future Business Leaders of America empowers students through leadership, technical skills, and career readiness—coding included.</p>
+            </div>
+            <div>
+              <h3 className="font-semibold mb-2">Trinity High School</h3>
+              <p className="text-warm-gray">Our team collaborates across design, frontend development, and research to deliver accessible, useful solutions for real needs.</p>
+            </div>
+            <div>
+              <h3 className="font-semibold mb-2">What We Do</h3>
+              <p className="text-warm-gray">We plan, prototype, and ship—using modern tools like React, TypeScript, and Tailwind—to create polished, responsive experiences.</p>
             </div>
           </div>
         </section>
