@@ -5,6 +5,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Reveal } from "@/components/Reveal";
+import { SocialLinks } from "@/components/SocialLinks";
 
 export default function Mission() {
   return (
@@ -59,6 +60,11 @@ export default function Mission() {
               </AccordionContent>
             </AccordionItem>
           </Accordion>
+        </section>
+      </Reveal>
+      <Reveal>
+        <section>
+          <SocialLinks />
         </section>
       </Reveal>
     </div>
