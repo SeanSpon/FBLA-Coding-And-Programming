@@ -14,6 +14,7 @@ import { stories } from "@/lib/data/stories";
 import { Metric } from "@/components/Metric";
 import { Reveal } from "@/components/Reveal";
 import { SectionDivider } from "@/components/SectionDivider";
+import { SocialLinks } from "@/components/SocialLinks";
 
 export default function Home() {
   return (
@@ -201,6 +202,13 @@ export default function Home() {
           </Carousel>
         </section>
       </Reveal>
+
+  <SectionDivider />
+
+  {/* Social Links + Featured Videos */}
+  <SocialLinks />
+
+  <SectionDivider />
 
       {/* Call to Action Banner */}
       <section className="bg-cream py-12">
