@@ -25,7 +25,7 @@ import { Search, MapPin, Phone, Globe, ChevronDown, Filter } from "lucide-react"
 
 export default function NonprofitDirectory() {
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedState, setSelectedState] = useState<string>("");
+  const [selectedState, setSelectedState] = useState<string>("all");
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [selectedServiceAreas, setSelectedServiceAreas] = useState<string[]>([]);
   const [selectedTargetPopulations, setSelectedTargetPopulations] = useState<string[]>([]);
@@ -41,8 +41,8 @@ export default function NonprofitDirectory() {
         nonprofit.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
         nonprofit.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()));
 
-      // State filter
-      const stateMatch = !selectedState || nonprofit.address.state === selectedState;
+  // State filter
+  const stateMatch = selectedState === "all" || nonprofit.address.state === selectedState;
 
       // Category filter
       const categoryMatch = selectedCategories.length === 0 || 
@@ -100,7 +100,7 @@ export default function NonprofitDirectory() {
 
   const clearAllFilters = () => {
     setSearchTerm("");
-    setSelectedState("");
+    setSelectedState("all");
     setSelectedCategories([]);
     setSelectedServiceAreas([]);
     setSelectedTargetPopulations([]);
@@ -140,7 +140,7 @@ export default function NonprofitDirectory() {
                   <SelectValue placeholder="Filter by State" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="">All States</SelectItem>
+                  <SelectItem value="all">All States</SelectItem>
                   {states.map((state) => (
                     <SelectItem key={state} value={state}>{state}</SelectItem>
                   ))}
@@ -157,7 +157,7 @@ export default function NonprofitDirectory() {
                 <ChevronDown className={`h-4 w-4 transition-transform ${showFilters ? 'rotate-180' : ''}`} />
               </Button>
 
-              {(selectedCategories.length > 0 || selectedServiceAreas.length > 0 || selectedTargetPopulations.length > 0 || selectedState) && (
+              {(selectedCategories.length > 0 || selectedServiceAreas.length > 0 || selectedTargetPopulations.length > 0 || selectedState !== "all") && (
                 <Button variant="ghost" onClick={clearAllFilters}>
                   Clear All Filters
                 </Button>
