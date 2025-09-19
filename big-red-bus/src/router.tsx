@@ -11,6 +11,8 @@ import Events from "@/pages/Events";
 import Stories from "@/pages/Stories";
 import Contact from "@/pages/Contact";
 import StoryDetail from "@/pages/StoryDetail";
+import NonprofitDirectory from "@/pages/NonprofitDirectory";
+import NonprofitDetail from "@/pages/NonprofitDetail";
 
 export const router = createBrowserRouter([
   {
@@ -27,6 +29,8 @@ export const router = createBrowserRouter([
       { path: "events", element: <Events /> },
       { path: "stories", element: <Stories /> },
       { path: "stories/:id", element: <StoryDetail /> },
+      { path: "nonprofits", element: <NonprofitDirectory /> },
+      { path: "nonprofits/:id", element: <NonprofitDetail /> },
       { path: "contact", element: <Contact /> },
     ],
   },
