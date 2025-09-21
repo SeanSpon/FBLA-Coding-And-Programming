@@ -5,9 +5,11 @@ import sqlite3 from "sqlite3";
 import { open } from "sqlite";
 import fs from "fs";
 import { parse } from "csv-parse/sync";
+import multer from "multer";
 
 const app = express();
 app.use(cors());
+const upload = multer({ dest: "uploads/" });
 
 const DB_PATH = "./nonprofits.db";
 let db;
@@ -96,6 +98,32 @@ app.get("/near", async (req, res) => {
     .slice(0, 50);
 
   res.json(withDist);
+});
+
+// Admin CSV import: POST /admin/import-csv with multipart form field name "file"
+app.post("/admin/import-csv", upload.single("file"), async (req, res) => {
+  try {
+    if (!req.file?.path) return res.status(400).json({ error: "file required" });
+    const csv = fs.readFileSync(req.file.path, "utf8");
+    const rows = parse(csv, { columns: true, skip_empty_lines: true });
+
+    await db.exec("delete from orgs;");
+    const stmt = await db.prepare(`
+      insert into orgs(name,ein,cause,city,state,website,phone,rating,needs,lat,lng)
+      values(?,?,?,?,?,?,?,?,?,?,?)
+    `);
+    for (const r of rows) {
+      await stmt.run(
+        r.name, r.ein, r.cause, r.city, r.state, r.website, r.phone,
+        Number(r.rating || 0), r.needs, Number(r.lat || 0), Number(r.lng || 0)
+      );
+    }
+    await stmt.finalize();
+    fs.unlinkSync(req.file.path);
+    res.json({ ok: true, imported: rows.length });
+  } catch (e) {
+    res.status(500).json({ error: e.message });
+  }
 });
 
 const PORT = process.env.PORT || 8080;

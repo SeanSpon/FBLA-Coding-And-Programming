@@ -1,0 +1,21 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Import Nonprofits CSV</title>
+<body style="font-family:system-ui;padding:24px">
+  <h2>Import Nonprofits CSV</h2>
+  <form id="f">
+    <input type="file" name="file" accept=".csv" required>
+    <button>Upload</button>
+  </form>
+  <pre id="out"></pre>
+<script>
+  document.getElementById("f").onsubmit = async (e) => {
+    e.preventDefault();
+    const data = new FormData(e.target);
+    const res = await fetch("http://localhost:8080/admin/import-csv", {
+      method: "POST", body: data
+    });
+    document.getElementById("out").textContent = await res.text();
+  };
+</script>
+</body>

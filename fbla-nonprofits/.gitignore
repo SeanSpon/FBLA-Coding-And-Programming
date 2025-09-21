@@ -1,3 +1,4 @@
 node_modules
 nonprofits.db
 .DS_Store
+scraped_nonprofits.csv
