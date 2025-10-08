@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Client Dashboard - SeeZee Studio</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="dashboard-container">
+    <!-- Client Dashboard Header -->
+    <header class="dashboard-header">
+      <div class="header-left">
+        <div class="logo">
+          <h2>SeeZee Studio</h2>
+          <span class="dashboard-type">Client Portal</span>
+        </div>
+      </div>
+      <div class="header-right">
+        <div class="header-actions">
+          <button class="notification-btn" onclick="toggleNotifications()">
+            <span class="notification-icon">🔔</span>
+            <span class="notification-badge">3</span>
+          </button>
+          <div class="user-menu" onclick="toggleUserDropdown()">
+            <div class="user-avatar">JD</div>
+            <div class="user-info">
+              <span class="user-name">John Doe</span>
+              <span class="user-role">Client</span>
+            </div>
+            <div class="user-dropdown" style="display: none;">
+              <a href="#" onclick="showSection('profile')">👤 My Profile</a>
+              <a href="#" onclick="showSection('settings')">⚙️ Settings</a>
+              <a href="#" onclick="toggleDarkMode()">🌙 Dark Mode</a>
+              <a href="admin.html">🔧 Admin Dashboard</a>
+              <a href="index.html">🏠 Back to Site</a>
+              <hr>
+              <a href="index.html">🚪 Sign Out</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Dashboard Layout -->
+    <div class="dashboard-layout">
+      <!-- Sidebar Navigation -->
+      <nav class="dashboard-sidebar">
+        <ul class="sidebar-nav">
+          <li class="nav-item active" data-section="overview" onclick="showSection('overview')">
+            <span class="nav-icon">📊</span>
+            <span class="nav-text">Overview</span>
+          </li>
+          <li class="nav-item" data-section="projects" onclick="showSection('projects')">
+            <span class="nav-icon">🚀</span>
+            <span class="nav-text">My Projects</span>
+          </li>
+          <li class="nav-item" data-section="invoices" onclick="showSection('invoices')">
+            <span class="nav-icon">📄</span>
+            <span class="nav-text">Invoices</span>
+          </li>
+          <li class="nav-item" data-section="messages" onclick="showSection('messages')">
+            <span class="nav-icon">💬</span>
+            <span class="nav-text">Messages</span>
+          </li>
+          <li class="nav-item" data-section="files" onclick="showSection('files')">
+            <span class="nav-icon">📁</span>
+            <span class="nav-text">Project Files</span>
+          </li>
+          <li class="nav-item" data-section="support" onclick="showSection('support')">
+            <span class="nav-icon">🎧</span>
+            <span class="nav-text">Support</span>
+          </li>
+          <li class="nav-item" data-section="profile" onclick="showSection('profile')">
+            <span class="nav-icon">👤</span>
+            <span class="nav-text">Profile</span>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Main Content -->
+      <main class="dashboard-main">
+        <div class="dashboard-content">
+          
+          <!-- Overview Section -->
+          <section class="content-section active" id="overview">
+            <div class="section-header">
+              <h1 class="page-title">Dashboard Overview</h1>
+              <p class="section-subtitle">Welcome back, John! Here's what's happening with your projects.</p>
+            </div>
+
+            <!-- Quick Stats -->
+            <div class="stats-grid">
+              <div class="stat-card">
+                <div class="stat-icon">🚀</div>
+                <div class="stat-content">
+                  <h3>Active Projects</h3>
+                  <div class="stat-value">2</div>
+                  <div class="stat-change positive">+1 this month</div>
+                </div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-icon">✅</div>
+                <div class="stat-content">
+                  <h3>Completed</h3>
+                  <div class="stat-value">8</div>
+                  <div class="stat-change positive">+2 this month</div>
+                </div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-icon">📄</div>
+                <div class="stat-content">
+                  <h3>Pending Invoices</h3>
+                  <div class="stat-value">1</div>
+                  <div class="stat-change">Due in 5 days</div>
+                </div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-icon">💰</div>
+                <div class="stat-content">
+                  <h3>Total Invested</h3>
+                  <div class="stat-value">$45,000</div>
+                  <div class="stat-change positive">Great ROI</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Current Projects -->
+            <div class="dashboard-grid">
+              <div class="card">
+                <div class="card-header">
+                  <h3 class="card-title">Current Projects</h3>
+                  <button class="button secondary" onclick="showSection('projects')">View All</button>
+                </div>
+                <div class="project-list">
+                  <div class="project-item">
+                    <div class="project-info">
+                      <h4>E-commerce Platform</h4>
+                      <p>Modern online store with payment integration</p>
+                      <div class="project-progress">
+                        <div class="progress-bar">
+                          <div class="progress-fill" style="width: 75%"></div>
+                        </div>
+                        <span class="progress-text">75% Complete</span>
+                      </div>
+                    </div>
+                    <div class="project-status">
+                      <span class="status-badge status-active">In Progress</span>
+                      <div class="project-timeline">Due: Nov 15, 2025</div>
+                    </div>
+                  </div>
+                  <div class="project-item">
+                    <div class="project-info">
+                      <h4>Mobile App Development</h4>
+                      <p>iOS & Android app for customer engagement</p>
+                      <div class="project-progress">
+                        <div class="progress-bar">
+                          <div class="progress-fill" style="width: 40%"></div>
+                        </div>
+                        <span class="progress-text">40% Complete</span>
+                      </div>
+                    </div>
+                    <div class="project-status">
+                      <span class="status-badge status-pending">Design Phase</span>
+                      <div class="project-timeline">Due: Dec 30, 2025</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Recent Activity Feed -->
+              <div class="card">
+                <div class="card-header">
+                  <h3 class="card-title">Recent Activity</h3>
+                  <button class="button secondary">View All</button>
+                </div>
+                <div class="activity-feed">
+                  <div class="activity-item">
+                    <div class="activity-icon">📝</div>
+                    <div class="activity-content">
+                      <div class="activity-title">Project update received</div>
+                      <div class="activity-description">E-commerce Platform - Database integration completed</div>
+                      <div class="activity-time">2 hours ago</div>
+                    </div>
+                  </div>
+                  <div class="activity-item">
+                    <div class="activity-icon">📄</div>
+                    <div class="activity-content">
+                      <div class="activity-title">New invoice generated</div>
+                      <div class="activity-description">Invoice #INV-001 for $15,000 - Mobile App Development</div>
+                      <div class="activity-time">1 day ago</div>
+                    </div>
+                  </div>
+                  <div class="activity-item">
+                    <div class="activity-icon">💬</div>
+                    <div class="activity-content">
+                      <div class="activity-title">Message from Sean</div>
+                      <div class="activity-description">Hi! The wireframes are ready for review...</div>
+                      <div class="activity-time">2 days ago</div>
+                    </div>
+                  </div>
+                  <div class="activity-item">
+                    <div class="activity-icon">✅</div>
+                    <div class="activity-content">
+                      <div class="activity-title">Milestone completed</div>
+                      <div class="activity-description">E-commerce Platform - Payment integration approved</div>
+                      <div class="activity-time">3 days ago</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Quick Actions</h3>
+              </div>
+              <div class="quick-actions">
+                <button class="action-button" onclick="showSection('messages')">
+                  <span class="action-icon">💬</span>
+                  <span class="action-text">Send Message</span>
+                </button>
+                <button class="action-button" onclick="showSection('invoices')">
+                  <span class="action-icon">📄</span>
+                  <span class="action-text">View Invoices</span>
+                </button>
+                <button class="action-button" onclick="showSection('files')">
+                  <span class="action-icon">📁</span>
+                  <span class="action-text">Download Files</span>
+                </button>
+                <button class="action-button" onclick="showSection('support')">
+                  <span class="action-icon">🎧</span>
+                  <span class="action-text">Get Support</span>
+                </button>
+              </div>
+            </div>
+          </section>
+
+          <!-- Projects Section -->
+          <section class="content-section" id="projects">
+            <div class="section-header">
+              <h1 class="page-title">My Projects</h1>
+              <p class="section-subtitle">Track the progress of all your projects</p>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">All Projects</h3>
+                <div class="filter-tabs">
+                  <button class="filter-tab active">All</button>
+                  <button class="filter-tab">Active</button>
+                  <button class="filter-tab">Completed</button>
+                  <button class="filter-tab">On Hold</button>
+                </div>
+              </div>
+              
+              <div class="projects-grid">
+                <div class="project-card">
+                  <div class="project-header">
+                    <h4>E-commerce Platform</h4>
+                    <span class="status-badge status-active">In Progress</span>
+                  </div>
+                  <p class="project-description">Modern online store with payment integration, inventory management, and customer portal</p>
+                  <div class="project-progress">
+                    <div class="progress-info">
+                      <span>Progress</span>
+                      <span>75%</span>
+                    </div>
+                    <div class="progress-bar">
+                      <div class="progress-fill" style="width: 75%"></div>
+                    </div>
+                  </div>
+                  <div class="project-meta">
+                    <div class="project-timeline">
+                      <span>📅 Started: Sep 1, 2025</span>
+                      <span>🎯 Due: Nov 15, 2025</span>
+                    </div>
+                    <div class="project-budget">Budget: $25,000</div>
+                  </div>
+                  <div class="project-actions">
+                    <button class="button primary">View Details</button>
+                    <button class="button secondary">Message Team</button>
+                  </div>
+                </div>
+
+                <div class="project-card">
+                  <div class="project-header">
+                    <h4>Mobile App Development</h4>
+                    <span class="status-badge status-pending">Design Phase</span>
+                  </div>
+                  <p class="project-description">Cross-platform mobile application for iOS and Android with real-time features</p>
+                  <div class="project-progress">
+                    <div class="progress-info">
+                      <span>Progress</span>
+                      <span>40%</span>
+                    </div>
+                    <div class="progress-bar">
+                      <div class="progress-fill" style="width: 40%"></div>
+                    </div>
+                  </div>
+                  <div class="project-meta">
+                    <div class="project-timeline">
+                      <span>📅 Started: Oct 1, 2025</span>
+                      <span>🎯 Due: Dec 30, 2025</span>
+                    </div>
+                    <div class="project-budget">Budget: $20,000</div>
+                  </div>
+                  <div class="project-actions">
+                    <button class="button primary">View Details</button>
+                    <button class="button secondary">Message Team</button>
+                  </div>
+                </div>
+
+                <div class="project-card completed">
+                  <div class="project-header">
+                    <h4>Company Website Redesign</h4>
+                    <span class="status-badge status-completed">Completed</span>
+                  </div>
+                  <p class="project-description">Complete website overhaul with modern design and improved user experience</p>
+                  <div class="project-progress">
+                    <div class="progress-info">
+                      <span>Progress</span>
+                      <span>100%</span>
+                    </div>
+                    <div class="progress-bar">
+                      <div class="progress-fill" style="width: 100%"></div>
+                    </div>
+                  </div>
+                  <div class="project-meta">
+                    <div class="project-timeline">
+                      <span>📅 Completed: Aug 15, 2025</span>
+                      <span>⭐ Rating: 5/5</span>
+                    </div>
+                    <div class="project-budget">Final: $15,000</div>
+                  </div>
+                  <div class="project-actions">
+                    <button class="button secondary">View Final</button>
+                    <button class="button secondary">Download Files</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Invoices Section -->
+          <section class="content-section" id="invoices">
+            <div class="section-header">
+              <h1 class="page-title">Invoices & Billing</h1>
+              <p class="section-subtitle">Manage your payments and billing history</p>
+            </div>
+
+            <div class="dashboard-grid">
+              <div class="card">
+                <div class="card-header">
+                  <h3 class="card-title">Recent Invoices</h3>
+                  <button class="button primary">Download All</button>
+                </div>
+                
+                <div class="data-table">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Invoice #</th>
+                        <th>Project</th>
+                        <th>Amount</th>
+                        <th>Status</th>
+                        <th>Due Date</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>#INV-003</td>
+                        <td>E-commerce Platform</td>
+                        <td>$10,000</td>
+                        <td><span class="status-badge status-pending">Pending</span></td>
+                        <td>Oct 13, 2025</td>
+                        <td>
+                          <div class="action-buttons">
+                            <button class="btn-small primary">Pay Now</button>
+                            <button class="btn-small">Download</button>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>#INV-002</td>
+                        <td>Mobile App Development</td>
+                        <td>$8,000</td>
+                        <td><span class="status-badge status-completed">Paid</span></td>
+                        <td>Sep 30, 2025</td>
+                        <td>
+                          <div class="action-buttons">
+                            <button class="btn-small">Download</button>
+                            <button class="btn-small">Receipt</button>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>#INV-001</td>
+                        <td>Website Redesign</td>
+                        <td>$15,000</td>
+                        <td><span class="status-badge status-completed">Paid</span></td>
+                        <td>Aug 15, 2025</td>
+                        <td>
+                          <div class="action-buttons">
+                            <button class="btn-small">Download</button>
+                            <button class="btn-small">Receipt</button>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-header">
+                  <h3 class="card-title">Payment Summary</h3>
+                </div>
+                <div class="payment-summary">
+                  <div class="summary-item">
+                    <span class="summary-label">Total Paid</span>
+                    <span class="summary-value">$23,000</span>
+                  </div>
+                  <div class="summary-item">
+                    <span class="summary-label">Outstanding</span>
+                    <span class="summary-value pending">$10,000</span>
+                  </div>
+                  <div class="summary-item">
+                    <span class="summary-label">Next Payment</span>
+                    <span class="summary-value">Oct 13, 2025</span>
+                  </div>
+                  <div class="summary-item">
+                    <span class="summary-label">Payment Method</span>
+                    <span class="summary-value">•••• 4567</span>
+                  </div>
+                </div>
+                <button class="button primary full-width">Update Payment Method</button>
+              </div>
+            </div>
+          </section>
+
+          <!-- Messages Section -->
+          <section class="content-section" id="messages">
+            <div class="section-header">
+              <h1 class="page-title">Messages</h1>
+              <p class="section-subtitle">Communicate with your project team</p>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Conversation with SeeZee Team</h3>
+                <button class="button primary">New Message</button>
+              </div>
+              
+              <div class="messages-container">
+                <div class="message received">
+                  <div class="message-avatar">SC</div>
+                  <div class="message-content">
+                    <div class="message-header">
+                      <span class="message-sender">Sean McCulloch</span>
+                      <span class="message-time">2 hours ago</span>
+                    </div>
+                    <div class="message-text">Hi John! The database integration for your e-commerce platform is now complete. You can review the admin panel functionality and let me know if you need any adjustments.</div>
+                  </div>
+                </div>
+
+                <div class="message sent">
+                  <div class="message-content">
+                    <div class="message-header">
+                      <span class="message-sender">You</span>
+                      <span class="message-time">1 hour ago</span>
+                    </div>
+                    <div class="message-text">That's great! I'll review it today. Also, can we schedule a call to discuss the mobile app wireframes?</div>
+                  </div>
+                  <div class="message-avatar">JD</div>
+                </div>
+
+                <div class="message received">
+                  <div class="message-avatar">SC</div>
+                  <div class="message-content">
+                    <div class="message-header">
+                      <span class="message-sender">Sean McCulloch</span>
+                      <span class="message-time">30 minutes ago</span>
+                    </div>
+                    <div class="message-text">Absolutely! I'm available tomorrow at 2 PM or Thursday at 10 AM. Which works better for you?</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="message-input">
+                <input type="text" placeholder="Type your message..." class="message-field">
+                <button class="send-button">Send</button>
+              </div>
+            </div>
+          </section>
+
+          <!-- Files Section -->
+          <section class="content-section" id="files">
+            <div class="section-header">
+              <h1 class="page-title">Project Files</h1>
+              <p class="section-subtitle">Access and download your project deliverables</p>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Available Downloads</h3>
+                <div class="file-filters">
+                  <button class="filter-tab active">All Files</button>
+                  <button class="filter-tab">Documents</button>
+                  <button class="filter-tab">Images</button>
+                  <button class="filter-tab">Code</button>
+                </div>
+              </div>
+              
+              <div class="files-grid">
+                <div class="file-item">
+                  <div class="file-icon">📄</div>
+                  <div class="file-info">
+                    <h4>Project Proposal - E-commerce</h4>
+                    <p>Detailed project scope and timeline</p>
+                    <div class="file-meta">
+                      <span>PDF • 2.4 MB</span>
+                      <span>Sep 1, 2025</span>
+                    </div>
+                  </div>
+                  <button class="button secondary">Download</button>
+                </div>
+
+                <div class="file-item">
+                  <div class="file-icon">🎨</div>
+                  <div class="file-info">
+                    <h4>UI/UX Wireframes</h4>
+                    <p>Initial design concepts and layouts</p>
+                    <div class="file-meta">
+                      <span>ZIP • 15.7 MB</span>
+                      <span>Sep 15, 2025</span>
+                    </div>
+                  </div>
+                  <button class="button secondary">Download</button>
+                </div>
+
+                <div class="file-item">
+                  <div class="file-icon">💻</div>
+                  <div class="file-info">
+                    <h4>Development Build v1.2</h4>
+                    <p>Latest development version for testing</p>
+                    <div class="file-meta">
+                      <span>ZIP • 45.2 MB</span>
+                      <span>Oct 5, 2025</span>
+                    </div>
+                  </div>
+                  <button class="button secondary">Download</button>
+                </div>
+
+                <div class="file-item">
+                  <div class="file-icon">📊</div>
+                  <div class="file-info">
+                    <h4>Analytics Report</h4>
+                    <p>Performance metrics and user data</p>
+                    <div class="file-meta">
+                      <span>PDF • 1.8 MB</span>
+                      <span>Oct 1, 2025</span>
+                    </div>
+                  </div>
+                  <button class="button secondary">Download</button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Support Section -->
+          <section class="content-section" id="support">
+            <div class="section-header">
+              <h1 class="page-title">Support Center</h1>
+              <p class="section-subtitle">Get help and submit support requests</p>
+            </div>
+
+            <div class="dashboard-grid">
+              <div class="card">
+                <div class="card-header">
+                  <h3 class="card-title">Submit Support Request</h3>
+                </div>
+                
+                <div class="support-form">
+                  <div class="form-field">
+                    <label>Subject</label>
+                    <input type="text" placeholder="Brief description of your issue">
+                  </div>
+                  <div class="form-field">
+                    <label>Priority</label>
+                    <select>
+                      <option>Low</option>
+                      <option>Medium</option>
+                      <option>High</option>
+                      <option>Urgent</option>
+                    </select>
+                  </div>
+                  <div class="form-field">
+                    <label>Category</label>
+                    <select>
+                      <option>Technical Issue</option>
+                      <option>Feature Request</option>
+                      <option>Billing Question</option>
+                      <option>General Inquiry</option>
+                    </select>
+                  </div>
+                  <div class="form-field">
+                    <label>Description</label>
+                    <textarea rows="4" placeholder="Please describe your issue in detail..."></textarea>
+                  </div>
+                  <button class="button primary">Submit Request</button>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-header">
+                  <h3 class="card-title">Quick Help</h3>
+                </div>
+                
+                <div class="quick-help">
+                  <div class="help-item">
+                    <h5>📞 Phone Support</h5>
+                    <p>Call us at (555) 123-4567</p>
+                    <span class="help-hours">Mon-Fri, 9 AM - 6 PM PST</span>
+                  </div>
+                  <div class="help-item">
+                    <h5>💬 Live Chat</h5>
+                    <p>Chat with our support team</p>
+                    <button class="button secondary">Start Chat</button>
+                  </div>
+                  <div class="help-item">
+                    <h5>📧 Email Support</h5>
+                    <p>support@seezee.studio</p>
+                    <span class="help-hours">24-48 hour response</span>
+                  </div>
+                  <div class="help-item">
+                    <h5>📚 Knowledge Base</h5>
+                    <p>Self-service help articles</p>
+                    <button class="button secondary">Browse Articles</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Profile Section -->
+          <section class="content-section" id="profile">
+            <div class="section-header">
+              <h1 class="page-title">My Profile</h1>
+              <p class="section-subtitle">Manage your account information and preferences</p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 24px;">
+              <div class="profile-card">
+                <div class="profile-avatar">JD</div>
+                <div class="profile-name">John Doe</div>
+                <div class="profile-role">Client</div>
+                <div style="display: flex; gap: 12px; justify-content: center; margin-top: 16px;">
+                  <button class="button primary">Edit Profile</button>
+                  <button class="button secondary">Change Photo</button>
+                </div>
+                
+                <div class="profile-stats">
+                  <div class="profile-stat">
+                    <div class="profile-stat-value">10</div>
+                    <div class="profile-stat-label">Projects</div>
+                  </div>
+                  <div class="profile-stat">
+                    <div class="profile-stat-value">2</div>
+                    <div class="profile-stat-label">Active</div>
+                  </div>
+                  <div class="profile-stat">
+                    <div class="profile-stat-value">$45K</div>
+                    <div class="profile-stat-label">Invested</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-header">
+                  <h3 class="card-title">Profile Information</h3>
+                  <button class="button primary">Save Changes</button>
+                </div>
+                
+                <div class="form-section">
+                  <h4>Personal Information</h4>
+                  <div class="form-row">
+                    <div class="form-field">
+                      <label>First Name</label>
+                      <input type="text" value="John" placeholder="Enter first name">
+                    </div>
+                    <div class="form-field">
+                      <label>Last Name</label>
+                      <input type="text" value="Doe" placeholder="Enter last name">
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-field">
+                      <label>Email Address</label>
+                      <input type="email" value="john.doe@company.com" placeholder="Enter email">
+                    </div>
+                    <div class="form-field">
+                      <label>Phone Number</label>
+                      <input type="tel" value="+1 (555) 987-6543" placeholder="Enter phone">
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-field">
+                      <label>Company</label>
+                      <input type="text" value="TechCorp Inc." placeholder="Enter company">
+                    </div>
+                    <div class="form-field">
+                      <label>Job Title</label>
+                      <input type="text" value="CTO" placeholder="Enter job title">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    // Client Dashboard Functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const urlKey = (location.hash.replace('#', '') || 'overview').toLowerCase();
+      
+      const navItems = document.querySelectorAll('.nav-item');
+      const contentSections = document.querySelectorAll('.content-section');
+      const pageTitle = document.querySelector('.page-title');
+      
+      function showSection(sectionId) {
+        navItems.forEach(nav => nav.classList.remove('active'));
+        
+        const activeNavItem = document.querySelector(`[data-section="${sectionId}"]`);
+        if (activeNavItem) {
+          activeNavItem.classList.add('active');
+        }
+        
+        contentSections.forEach(section => section.classList.remove('active'));
+        
+        const targetSection = document.getElementById(sectionId);
+        if (targetSection) {
+          targetSection.classList.add('active');
+          window.location.hash = sectionId;
+        }
+      }
+      
+      // Make showSection global
+      window.showSection = showSection;
+      
+      showSection(urlKey);
+      
+      navItems.forEach(item => {
+        item.addEventListener('click', function(e) {
+          e.preventDefault();
+          const sectionId = this.dataset.section;
+          if (sectionId) {
+            showSection(sectionId);
+          }
+        });
+      });
+      
+      window.addEventListener('hashchange', function() {
+        const newSection = (location.hash.replace('#', '') || 'overview').toLowerCase();
+        showSection(newSection);
+      });
+    });
+
+    // Toggle user dropdown
+    function toggleUserDropdown() {
+      const dropdown = document.querySelector('.user-dropdown');
+      if (dropdown) {
+        dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+      }
+    }
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(e) {
+      const userMenu = document.querySelector('.user-menu');
+      const dropdown = document.querySelector('.user-dropdown');
+      
+      if (userMenu && dropdown && !userMenu.contains(e.target)) {
+        dropdown.style.display = 'none';
+      }
+    });
+
+    // Toggle notifications
+    function toggleNotifications() {
+      alert('Notifications feature coming soon!');
+    }
+
+    // Dark mode toggle
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+      localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+    }
+
+    // Initialize dark mode from localStorage
+    document.addEventListener('DOMContentLoaded', function() {
+      if (localStorage.getItem('darkMode') === 'true') {
+        document.body.classList.add('dark-mode');
+      }
+    });
+  </script>
+</body>
+</html>
