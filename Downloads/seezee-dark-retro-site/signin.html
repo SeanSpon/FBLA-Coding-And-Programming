@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In — SeeZee Studio</title>
+  <link rel="stylesheet" href="assets/css/style.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="auth-container">
+  <div class="auth-card">
+    <div class="auth-header">
+      <div class="brand">
+        <div class="logo">SZ</div>
+        <span>SeeZee Studio</span>
+      </div>
+      <h2 class="mt-4">Welcome back</h2>
+      <p class="text-secondary">Sign in to your account</p>
+    </div>
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--background);
+      color: var(--text);
+      text-decoration: none;
+      transition: all 0.2s ease;
+      margin-bottom: 24px;
+    }
+    
+    .google-signin:hover {
+      background: var(--surface);
+      border-color: var(--primary);
+    }
+    
+    .divider {
+      display: flex;
+      align-items: center;
+      margin: 24px 0;
+    }
+    
+    .divider::before,
+    .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+    
+    .divider span {
+      padding: 0 16px;
+      color: var(--text-secondary);
+      font-size: 14px;
+    }
+    
+    .auth-links {
+      text-align: center;
+      margin-top: 24px;
+    }
+    
+    .auth-links a {
+      color: var(--primary);
+      text-decoration: none;
+      font-size: 14px;
+    }
+    
+    .auth-links a:hover {
+      text-decoration: underline;
+    }
+    
+    .back-link {
+      position: absolute;
+      top: 24px;
+      left: 24px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+    }
+    
+    .back-link:hover {
+      color: var(--primary);
+    }
+  </style>
+</head>
+<body>
+
+<a href="index.html" class="back-link">
+  ← Back to Home
+</a>
+
+<div class="auth-container">
+  <div class="auth-card">
+    <div class="auth-header">
+      <div class="brand">
+        <div class="logo">SZ</div>
+        <span>SeeZee Studio</span>
+      </div>
+      <h2 style="margin: 16px 0 8px;">Sign In</h2>
+      <p style="color: var(--text-secondary); margin: 0;">Access your project dashboard</p>
+    </div>
+
+    <form id="signinForm">
+      <button type="button" class="google-signin" onclick="signInWithGoogle()">
+        <svg width="18" height="18" viewBox="0 0 24 24">
+          <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+          <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+          <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+          <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+        </svg>
+        Continue with Google
+      </button>
+
+      <div class="divider">
+        <span>or</span>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" required>
+        <div class="error-message" id="emailError">Please enter a valid email address</div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+        <div class="error-message" id="passwordError">Password is required</div>
+      </div>
+
+      <div class="flex" style="justify-content: space-between; align-items: center; margin-bottom: var(--space-6);">
+        <label class="flex" style="align-items: center; gap: var(--space-2); font-size: var(--font-size-sm); cursor: pointer;">
+          <input type="checkbox" id="remember" name="remember">
+          <span>Remember me</span>
+        </label>
+        <a href="#" style="color: var(--primary); font-size: var(--font-size-sm); text-decoration: none;">Forgot password?</a>
+      </div>
+          <input type="checkbox" name="remember" style="width: auto;">
+          <span>Remember me</span>
+        </label>
+        <a href="forgot.html" style="font-size: 14px; color: var(--primary); text-decoration: none;">Forgot password?</a>
+      </div>
+
+      <button type="submit" class="button primary" style="width: 100%; margin-bottom: 16px;">
+        Sign In
+      </button>
+
+      <div id="authError" class="error-message" style="text-align: center; margin-bottom: 16px; display: none;">
+        Invalid email or password. Please try again.
+      </div>
+    </form>
+
+    <div class="auth-links">
+      <p style="color: var(--text-secondary); font-size: 14px; margin: 0;">
+        Don't have an account? <a href="mailto:contact@seezee.dev">Contact us</a> to get started.
+      </p>
+    </div>
+  </div>
+</div>
+
+<script>
+document.getElementById('signinForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+  
+  // Clear previous errors
+  clearErrors();
+  
+  // Basic validation
+  if (!email) {
+    showError('email', 'Email is required');
+    return;
+  }
+  
+  if (!password) {
+    showError('password', 'Password is required');
+    return;
+  }
+  
+  // Simulate authentication
+  // In a real app, this would make an API call
+  if (email === 'admin@seezee.dev' && password === 'admin123') {
+    // Redirect to admin dashboard
+    window.location.href = 'admin.html';
+  } else if (email === 'jane@techcorp.com' && password === 'client123') {
+    // Redirect to client portal
+    window.location.href = 'client.html';
+  } else {
+    // Show error
+    document.getElementById('authError').style.display = 'block';
+  }
+});
+
+function signInWithGoogle() {
+  // In a real app, this would integrate with Google OAuth
+  alert('Google sign-in would be integrated here. For demo purposes, use:\n\nAdmin: admin@seezee.dev / admin123\nClient: jane@techcorp.com / client123');
+}
+
+function showError(fieldName, message) {
+  const field = document.getElementById(fieldName);
+  const errorDiv = document.getElementById(fieldName + 'Error');
+  
+  field.classList.add('error');
+  errorDiv.textContent = message;
+  errorDiv.style.display = 'block';
+}
+
+function clearErrors() {
+  const errorFields = document.querySelectorAll('.error');
+  const errorMessages = document.querySelectorAll('.error-message');
+  
+  errorFields.forEach(field => field.classList.remove('error'));
+  errorMessages.forEach(msg => msg.style.display = 'none');
+}
+
+// Clear errors when user types
+document.getElementById('email').addEventListener('input', function() {
+  this.classList.remove('error');
+  document.getElementById('emailError').style.display = 'none';
+  document.getElementById('authError').style.display = 'none';
+});
+
+document.getElementById('password').addEventListener('input', function() {
+  this.classList.remove('error');
+  document.getElementById('passwordError').style.display = 'none';
+  document.getElementById('authError').style.display = 'none';
+});
+</script>
+
+</body>
+</html>

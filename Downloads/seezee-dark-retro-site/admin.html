@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard — SeeZee Studio</title>
+  <link rel="stylesheet" href="assets/css/style.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    .admin-layout {
+      display: grid;
+      grid-template-columns: 250px 1fr;
+      min-height: 100vh;
+      background: var(--surface);
+    }
+    
+    .sidebar {
+      background: var(--background);
+      border-right: 1px solid var(--border);
+      padding: 24px 0;
+      position: fixed;
+      height: 100vh;
+      width: 250px;
+      overflow-y: auto;
+    }
+    
+    .sidebar-header {
+      padding: 0 24px 24px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 24px;
+    }
+    
+    .sidebar-nav {
+      padding: 0 12px;
+    }
+    
+    .sidebar-nav-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      margin-bottom: 4px;
+      border-radius: var(--radius);
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+    
+    .sidebar-nav-item:hover {
+      background: var(--surface-hover);
+      color: var(--primary);
+      transform: translateX(4px);
+    }
+    
+    .sidebar-nav-item.active {
+      background: var(--gradient-primary);
+      color: var(--background);
+      box-shadow: var(--glow-primary);
+    }
+    
+    .sidebar-nav-item .icon {
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
+    
+    .main-content {
+      margin-left: 250px;
+      padding: var(--space-6);
+      background: var(--surface-glass);
+      backdrop-filter: blur(20px);
+      min-height: 100vh;
+    }
+    
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: var(--space-8);
+      padding: var(--space-4);
+      background: var(--surface);
+      border-radius: var(--radius-2xl);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+    }
+    
+    .search-bar {
+      flex: 1;
+      max-width: 400px;
+      margin-right: 24px;
+    }
+    
+    .search-bar input {
+      width: 100%;
+      padding: 8px 16px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+    }
+    
+    .user-menu {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    .content-section {
+      display: none;
+    }
+    
+    .content-section.active {
+      display: block;
+    }
+    
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-bottom: 32px;
+    }
+    
+    .kpi-card {
+      background: var(--background);
+      padding: 24px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      text-align: center;
+    }
+    
+    .kpi-value {
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+    
+    .kpi-label {
+      color: var(--text-secondary);
+      font-size: 14px;
+    }
+    
+    .data-table {
+      background: var(--background);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+    
+    .table-header {
+      padding: 16px 24px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .table-filters {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+    
+    .filter-select {
+      padding: 6px 12px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+      font-size: 14px;
+    }
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    
+    th, td {
+      padding: 12px 24px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    th {
+      background: var(--surface);
+      font-weight: 600;
+      color: var(--text);
+    }
+    
+    tr:hover {
+      background: var(--surface);
+    }
+    
+    .status-badge {
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 500;
+    }
+    
+    .status-active {
+      background: rgba(34, 197, 94, 0.1);
+      color: var(--success);
+    }
+    
+    .status-pending {
+      background: rgba(245, 158, 11, 0.1);
+      color: var(--warning);
+    }
+    
+    .status-completed {
+      background: rgba(37, 99, 235, 0.1);
+      color: var(--primary);
+    }
+    
+    .status-overdue {
+      background: rgba(220, 38, 38, 0.1);
+      color: var(--danger);
+    }
+    
+    .action-buttons {
+      display: flex;
+      gap: 8px;
+    }
+    
+    .btn-small {
+      padding: 4px 12px;
+      font-size: 12px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    
+    .btn-small:hover {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+    
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .modal.show {
+      display: flex;
+    }
+    
+    .modal-content {
+      background: var(--background);
+      padding: 32px;
+      border-radius: var(--radius-lg);
+      max-width: 500px;
+      width: 90%;
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+    
+    .kanban-board {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin-top: 24px;
+    }
+    
+    .kanban-column {
+      background: var(--background);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      padding: 16px;
+    }
+    
+    .kanban-header {
+      font-weight: 600;
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .kanban-card {
+      background: var(--surface);
+      padding: 12px;
+      border-radius: var(--radius);
+      margin-bottom: 12px;
+      border: 1px solid var(--border);
+      cursor: pointer;
+    }
+    
+    .kanban-card:hover {
+      border-color: var(--primary);
+    }
+    
+    .card-title {
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+    
+    .card-meta {
+      font-size: 12px;
+      color: var(--text-secondary);
+      display: flex;
+      justify-content: space-between;
+    }
+    
+    @media (max-width: 1024px) {
+      .admin-layout {
+        grid-template-columns: 1fr;
+      }
+      
+      .sidebar {
+        position: static;
+        width: 100%;
+        height: auto;
+      }
+      
+      .main-content {
+        margin-left: 0;
+      }
+      
+      .kanban-board {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .kpi-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .kanban-board {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="admin-layout">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="brand">
+        <div class="logo">SZ</div>
+        <span>Admin Dashboard</span>
+      </div>
+    </div>
+    
+    <nav class="sidebar-nav">
+      <a href="index.html" class="sidebar-nav-item" style="background: var(--primary); color: white; margin-bottom: 16px;">
+        <span class="icon">🏠</span>
+        <span>Back to Home</span>
+      </a>
+      <a class="sidebar-nav-item active" data-section="overview">
+        <span class="icon">📊</span>
+        <span>Overview</span>
+      </a>
+      <a class="sidebar-nav-item" data-section="projects">
+        <span class="icon">📁</span>
+        <span>Projects</span>
+      </a>
+      <a class="sidebar-nav-item" data-section="tasks">
+        <span class="icon">✓</span>
+        <span>Tasks</span>
+      </a>
+      <a class="sidebar-nav-item" data-section="invoices">
+        <span class="icon">💰</span>
+        <span>Invoices</span>
+      </a>
+      <a class="sidebar-nav-item" data-section="clients">
+        <span class="icon">👥</span>
+        <span>Clients</span>
+      </a>
+      <a class="sidebar-nav-item" data-section="files">
+        <span class="icon">📄</span>
+        <span>Files</span>
+      </a>
+      <a class="sidebar-nav-item" data-section="feed">
+        <span class="icon">💬</span>
+        <span>Feed</span>
+      </a>
+      <a class="sidebar-nav-item" data-section="analytics">
+        <span class="icon">📈</span>
+        <span>Analytics</span>
+      </a>
+      <a class="sidebar-nav-item" data-section="settings">
+        <span class="icon">⚙️</span>
+        <span>Settings</span>
+      </a>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <!-- Top Bar -->
+    <div class="top-bar">
+      <div class="search-bar">
+        <input type="search" placeholder="Search projects, clients, tasks...">
+      </div>
+      <div class="user-menu">
+        <select class="filter-select">
+          <option>All Projects</option>
+          <option>Active</option>
+          <option>Completed</option>
+        </select>
+        <div style="width: 32px; height: 32px; border-radius: 50%; background: var(--primary); display: flex; align-items: center; justify-content: center; color: white; font-weight: 600;">A</div>
+      </div>
+    </div>
+
+    <!-- Overview Section -->
+    <section class="content-section active" id="overview">
+      <h2 style="margin-bottom: 24px;">Dashboard Overview</h2>
+      
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-value">12</div>
+          <div class="kpi-label">Active Projects</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-value">34</div>
+          <div class="kpi-label">Open Tasks</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-value">$8,500</div>
+          <div class="kpi-label">Pending Invoices</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-value">28</div>
+          <div class="kpi-label">Total Clients</div>
+        </div>
+      </div>
+
+      <div class="grid cols-2" style="gap: 24px;">
+        <div class="data-table">
+          <div class="table-header">
+            <h3>Recent Activity</h3>
+          </div>
+          <table>
+            <tbody>
+              <tr>
+                <td>Project "E-commerce Platform" completed</td>
+                <td>2 hours ago</td>
+              </tr>
+              <tr>
+                <td>New client "TechCorp" added</td>
+                <td>4 hours ago</td>
+              </tr>
+              <tr>
+                <td>Invoice #1023 sent to client</td>
+                <td>1 day ago</td>
+              </tr>
+              <tr>
+                <td>Task "Homepage design" assigned</td>
+                <td>2 days ago</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <div class="data-table">
+          <div class="table-header">
+            <h3>Upcoming Deadlines</h3>
+          </div>
+          <table>
+            <tbody>
+              <tr>
+                <td>SaaS Dashboard - Phase 2</td>
+                <td><span class="status-badge status-pending">Due Tomorrow</span></td>
+              </tr>
+              <tr>
+                <td>Mobile App - Testing</td>
+                <td><span class="status-badge status-active">Due in 3 days</span></td>
+              </tr>
+              <tr>
+                <td>Website Redesign</td>
+                <td><span class="status-badge status-active">Due in 1 week</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="content-section" id="projects">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+        <h2>Projects</h2>
+        <div style="display: flex; gap: 12px;">
+          <button class="button" id="tableViewBtn">Table View</button>
+          <button class="button secondary" id="kanbanViewBtn">Kanban View</button>
+          <button class="button primary" onclick="openModal('newProjectModal')">New Project</button>
+        </div>
+      </div>
+
+      <!-- Table View -->
+      <div class="data-table" id="projectsTable">
+        <div class="table-header">
+          <h3>All Projects</h3>
+          <div class="table-filters">
+            <select class="filter-select">
+              <option>All Status</option>
+              <option>Active</option>
+              <option>Completed</option>
+              <option>On Hold</option>
+            </select>
+            <select class="filter-select">
+              <option>All Clients</option>
+              <option>TechCorp</option>
+              <option>StartupXYZ</option>
+            </select>
+          </div>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Project Name</th>
+              <th>Client</th>
+              <th>Status</th>
+              <th>Progress</th>
+              <th>Due Date</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr onclick="openModal('projectDetailModal')">
+              <td>E-commerce Platform</td>
+              <td>TechCorp</td>
+              <td><span class="status-badge status-completed">Completed</span></td>
+              <td>100%</td>
+              <td>Oct 5, 2025</td>
+              <td>
+                <div class="action-buttons">
+                  <button class="btn-small">View</button>
+                  <button class="btn-small">Edit</button>
+                </div>
+              </td>
+            </tr>
+            <tr onclick="openModal('projectDetailModal')">
+              <td>SaaS Dashboard</td>
+              <td>StartupXYZ</td>
+              <td><span class="status-badge status-active">Active</span></td>
+              <td>75%</td>
+              <td>Oct 15, 2025</td>
+              <td>
+                <div class="action-buttons">
+                  <button class="btn-small">View</button>
+                  <button class="btn-small">Edit</button>
+                </div>
+              </td>
+            </tr>
+            <tr onclick="openModal('projectDetailModal')">
+              <td>Mobile Web App</td>
+              <td>LocalBiz</td>
+              <td><span class="status-badge status-pending">In Review</span></td>
+              <td>90%</td>
+              <td>Oct 20, 2025</td>
+              <td>
+                <div class="action-buttons">
+                  <button class="btn-small">View</button>
+                  <button class="btn-small">Edit</button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Kanban View -->
+      <div class="kanban-board" id="projectsKanban" style="display: none;">
+        <div class="kanban-column">
+          <div class="kanban-header">Planning</div>
+          <div class="kanban-card" onclick="openModal('projectDetailModal')">
+            <div class="card-title">Website Redesign</div>
+            <div class="card-meta">
+              <span>ClientCorp</span>
+              <span>Due: Nov 1</span>
+            </div>
+          </div>
+        </div>
+        <div class="kanban-column">
+          <div class="kanban-header">In Progress</div>
+          <div class="kanban-card" onclick="openModal('projectDetailModal')">
+            <div class="card-title">SaaS Dashboard</div>
+            <div class="card-meta">
+              <span>StartupXYZ</span>
+              <span>75% Complete</span>
+            </div>
+          </div>
+          <div class="kanban-card" onclick="openModal('projectDetailModal')">
+            <div class="card-title">Mobile Web App</div>
+            <div class="card-meta">
+              <span>LocalBiz</span>
+              <span>90% Complete</span>
+            </div>
+          </div>
+        </div>
+        <div class="kanban-column">
+          <div class="kanban-header">Review</div>
+          <div class="kanban-card" onclick="openModal('projectDetailModal')">
+            <div class="card-title">API Integration</div>
+            <div class="card-meta">
+              <span>TechStart</span>
+              <span>Testing</span>
+            </div>
+          </div>
+        </div>
+        <div class="kanban-column">
+          <div class="kanban-header">Completed</div>
+          <div class="kanban-card" onclick="openModal('projectDetailModal')">
+            <div class="card-title">E-commerce Platform</div>
+            <div class="card-meta">
+              <span>TechCorp</span>
+              <span>Delivered</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tasks Section -->
+    <section class="content-section" id="tasks">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+        <h2>Tasks</h2>
+        <button class="button primary" onclick="openModal('newTaskModal')">New Task</button>
+      </div>
+
+      <div class="data-table">
+        <div class="table-header">
+          <h3>All Tasks</h3>
+          <div class="table-filters">
+            <select class="filter-select">
+              <option>All Status</option>
+              <option>Open</option>
+              <option>In Progress</option>
+              <option>Completed</option>
+            </select>
+            <select class="filter-select">
+              <option>All Priority</option>
+              <option>High</option>
+              <option>Medium</option>
+              <option>Low</option>
+            </select>
+            <select class="filter-select">
+              <option>All Assignees</option>
+              <option>Sean</option>
+              <option>Zach</option>
+            </select>
+          </div>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Task</th>
+              <th>Project</th>
+              <th>Status</th>
+              <th>Priority</th>
+              <th>Assignee</th>
+              <th>Due Date</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr onclick="openModal('taskDetailModal')">
+              <td>Design homepage mockup</td>
+              <td>Website Redesign</td>
+              <td><span class="status-badge status-active">In Progress</span></td>
+              <td><span class="status-badge status-pending">High</span></td>
+              <td>Zach</td>
+              <td>Oct 10, 2025</td>
+              <td>
+                <div class="action-buttons">
+                  <button class="btn-small">View</button>
+                  <button class="btn-small">Edit</button>
+                </div>
+              </td>
+            </tr>
+            <tr onclick="openModal('taskDetailModal')">
+              <td>Implement user authentication</td>
+              <td>SaaS Dashboard</td>
+              <td><span class="status-badge status-completed">Completed</span></td>
+              <td><span class="status-badge status-overdue">High</span></td>
+              <td>Sean</td>
+              <td>Oct 8, 2025</td>
+              <td>
+                <div class="action-buttons">
+                  <button class="btn-small">View</button>
+                  <button class="btn-small">Edit</button>
+                </div>
+              </td>
+            </tr>
+            <tr onclick="openModal('taskDetailModal')">
+              <td>Write API documentation</td>
+              <td>Mobile Web App</td>
+              <td><span class="status-badge status-pending">Pending</span></td>
+              <td><span class="status-badge status-active">Medium</span></td>
+              <td>Sean</td>
+              <td>Oct 12, 2025</td>
+              <td>
+                <div class="action-buttons">
+                  <button class="btn-small">View</button>
+                  <button class="btn-small">Edit</button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Invoices Section -->
+    <section class="content-section" id="invoices">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+        <h2>Invoices</h2>
+        <button class="button primary" onclick="openModal('newInvoiceModal')">New Invoice</button>
+      </div>
+
+      <div class="data-table">
+        <div class="table-header">
+          <h3>All Invoices</h3>
+          <div class="table-filters">
+            <select class="filter-select">
+              <option>All Status</option>
+              <option>Draft</option>
+              <option>Sent</option>
+              <option>Paid</option>
+              <option>Overdue</option>
+            </select>
+          </div>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Invoice #</th>
+              <th>Client</th>
+              <th>Date</th>
+              <th>Amount</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr onclick="openModal('invoiceDetailModal')">
+              <td>#1025</td>
+              <td>TechCorp</td>
+              <td>Oct 1, 2025</td>
+              <td>$12,500</td>
+              <td><span class="status-badge status-completed">Paid</span></td>
+              <td>
+                <div class="action-buttons">
+                  <button class="btn-small">View</button>
+                  <button class="btn-small">Download</button>
+                </div>
+              </td>
+            </tr>
+            <tr onclick="openModal('invoiceDetailModal')">
+              <td>#1024</td>
+              <td>StartupXYZ</td>
+              <td>Sep 28, 2025</td>
+              <td>$8,500</td>
+              <td><span class="status-badge status-pending">Sent</span></td>
+              <td>
+                <div class="action-buttons">
+                  <button class="btn-small">View</button>
+                  <button class="btn-small">Remind</button>
+                </div>
+              </td>
+            </tr>
+            <tr onclick="openModal('invoiceDetailModal')">
+              <td>#1023</td>
+              <td>LocalBiz</td>
+              <td>Sep 15, 2025</td>
+              <td>$5,200</td>
+              <td><span class="status-badge status-overdue">Overdue</span></td>
+              <td>
+                <div class="action-buttons">
+                  <button class="btn-small">View</button>
+                  <button class="btn-small">Follow up</button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Clients Section -->
+    <section class="content-section" id="clients">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+        <h2>Clients</h2>
+        <button class="button primary" onclick="openModal('newClientModal')">New Client</button>
+      </div>
+
+      <div class="grid cols-3" style="gap: 20px;">
+        <div class="card" onclick="openModal('clientDetailModal')">
+          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+            <div style="width: 48px; height: 48px; border-radius: 50%; background: var(--primary); display: flex; align-items: center; justify-content: center; color: white; font-weight: 600;">TC</div>
+            <div>
+              <h4 style="margin: 0;">TechCorp</h4>
+              <p style="margin: 0; color: var(--text-secondary); font-size: 14px;">jane@techcorp.com</p>
+            </div>
+          </div>
+          <div style="display: flex; justify-content: space-between; font-size: 14px; color: var(--text-secondary);">
+            <span>3 Projects</span>
+            <span>Last active: 2 days ago</span>
+          </div>
+        </div>
+
+        <div class="card" onclick="openModal('clientDetailModal')">
+          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+            <div style="width: 48px; height: 48px; border-radius: 50%; background: var(--success); display: flex; align-items: center; justify-content: center; color: white; font-weight: 600;">SX</div>
+            <div>
+              <h4 style="margin: 0;">StartupXYZ</h4>
+              <p style="margin: 0; color: var(--text-secondary); font-size: 14px;">mike@startupxyz.com</p>
+            </div>
+          </div>
+          <div style="display: flex; justify-content: space-between; font-size: 14px; color: var(--text-secondary);">
+            <span>2 Projects</span>
+            <span>Last active: 1 week ago</span>
+          </div>
+        </div>
+
+        <div class="card" onclick="openModal('clientDetailModal')">
+          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+            <div style="width: 48px; height: 48px; border-radius: 50%; background: var(--warning); display: flex; align-items: center; justify-content: center; color: white; font-weight: 600;">LB</div>
+            <div>
+              <h4 style="margin: 0;">LocalBiz</h4>
+              <p style="margin: 0; color: var(--text-secondary); font-size: 14px;">sarah@localbiz.com</p>
+            </div>
+          </div>
+          <div style="display: flex; justify-content: space-between; font-size: 14px; color: var(--text-secondary);">
+            <span>1 Project</span>
+            <span>Last active: 3 days ago</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Files Section -->
+    <section class="content-section" id="files">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+        <h2>Files</h2>
+        <button class="button primary">Upload File</button>
+      </div>
+
+      <div class="data-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Project</th>
+              <th>Type</th>
+              <th>Size</th>
+              <th>Modified</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>📄 project-brief.pdf</td>
+              <td>E-commerce Platform</td>
+              <td>PDF</td>
+              <td>2.4 MB</td>
+              <td>Oct 5, 2025</td>
+              <td>
+                <div class="action-buttons">
+                  <button class="btn-small">Download</button>
+                  <button class="btn-small">Share</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>🎨 design-mockups.fig</td>
+              <td>SaaS Dashboard</td>
+              <td>Figma</td>
+              <td>8.1 MB</td>
+              <td>Oct 3, 2025</td>
+              <td>
+                <div class="action-buttons">
+                  <button class="btn-small">Download</button>
+                  <button class="btn-small">Share</button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Feed Section -->
+    <section class="content-section" id="feed">
+      <h2 style="margin-bottom: 24px;">Activity Feed</h2>
+      
+      <div class="card">
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          <div style="display: flex; gap: 12px; padding: 16px; border-bottom: 1px solid var(--border);">
+            <div style="width: 32px; height: 32px; border-radius: 50%; background: var(--primary); display: flex; align-items: center; justify-content: center; color: white; font-size: 14px; font-weight: 600;">S</div>
+            <div style="flex: 1;">
+              <div style="font-weight: 500;">Sean</div>
+              <div style="color: var(--text-secondary); font-size: 14px;">Completed task "User authentication" on SaaS Dashboard</div>
+              <div style="color: var(--text-secondary); font-size: 12px; margin-top: 4px;">2 hours ago</div>
+            </div>
+          </div>
+          
+          <div style="display: flex; gap: 12px; padding: 16px; border-bottom: 1px solid var(--border);">
+            <div style="width: 32px; height: 32px; border-radius: 50%; background: var(--success); display: flex; align-items: center; justify-content: center; color: white; font-size: 14px; font-weight: 600;">Z</div>
+            <div style="flex: 1;">
+              <div style="font-weight: 500;">Zach</div>
+              <div style="color: var(--text-secondary); font-size: 14px;">Uploaded new design mockups for Mobile Web App</div>
+              <div style="color: var(--text-secondary); font-size: 12px; margin-top: 4px;">4 hours ago</div>
+            </div>
+          </div>
+          
+          <div style="display: flex; gap: 12px; padding: 16px;">
+            <div style="width: 32px; height: 32px; border-radius: 50%; background: var(--warning); display: flex; align-items: center; justify-content: center; color: white; font-size: 14px; font-weight: 600;">S</div>
+            <div style="flex: 1;">
+              <div style="font-weight: 500;">Sean</div>
+              <div style="color: var(--text-secondary); font-size: 14px;">Sent invoice #1024 to StartupXYZ</div>
+              <div style="color: var(--text-secondary); font-size: 12px; margin-top: 4px;">1 day ago</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Analytics Section -->
+    <section class="content-section" id="analytics">
+      <h2 style="margin-bottom: 24px;">Analytics</h2>
+      
+      <div class="grid cols-2" style="gap: 24px;">
+        <div class="card">
+          <h4 style="margin-bottom: 16px;">Project Velocity</h4>
+          <div style="height: 200px; background: var(--surface); border-radius: var(--radius); display: flex; align-items: center; justify-content: center; color: var(--text-secondary);">
+            📊 Chart Placeholder - Project completion over time
+          </div>
+        </div>
+        
+        <div class="card">
+          <h4 style="margin-bottom: 16px;">Revenue Trend</h4>
+          <div style="height: 200px; background: var(--surface); border-radius: var(--radius); display: flex; align-items: center; justify-content: center; color: var(--text-secondary);">
+            📈 Chart Placeholder - Monthly revenue
+          </div>
+        </div>
+        
+        <div class="card">
+          <h4 style="margin-bottom: 16px;">Task Cycle Time</h4>
+          <div style="height: 200px; background: var(--surface); border-radius: var(--radius); display: flex; align-items: center; justify-content: center; color: var(--text-secondary);">
+            ⏱️ Chart Placeholder - Average task completion time
+          </div>
+        </div>
+        
+        <div class="card">
+          <h4 style="margin-bottom: 16px;">Billable Hours Ratio</h4>
+          <div style="height: 200px; background: var(--surface); border-radius: var(--radius); display: flex; align-items: center; justify-content: center; color: var(--text-secondary);">
+            🕒 Chart Placeholder - Billable vs non-billable hours
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Settings Section -->
+    <section class="content-section" id="settings">
+      <h2 style="margin-bottom: 24px;">Settings</h2>
+      
+      <div class="grid cols-2" style="gap: 24px;">
+        <div class="card">
+          <h4 style="margin-bottom: 16px;">Roles & Permissions</h4>
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px; background: var(--surface); border-radius: var(--radius);">
+              <div>
+                <div style="font-weight: 500;">Admin</div>
+                <div style="font-size: 14px; color: var(--text-secondary);">Full access to all features</div>
+              </div>
+              <button class="btn-small">Edit</button>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px; background: var(--surface); border-radius: var(--radius);">
+              <div>
+                <div style="font-weight: 500;">Member</div>
+                <div style="font-size: 14px; color: var(--text-secondary);">Limited access to projects and tasks</div>
+              </div>
+              <button class="btn-small">Edit</button>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px; background: var(--surface); border-radius: var(--radius);">
+              <div>
+                <div style="font-weight: 500;">Client</div>
+                <div style="font-size: 14px; color: var(--text-secondary);">Read-only access to own projects</div>
+              </div>
+              <button class="btn-small">Edit</button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card">
+          <h4 style="margin-bottom: 16px;">Brand Theme</h4>
+          <div style="display: flex; flex-direction: column; gap: 16px;">
+            <div>
+              <label style="display: block; margin-bottom: 8px; font-weight: 500;">Logo</label>
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <div class="logo">SZ</div>
+                <button class="btn-small">Upload New</button>
+              </div>
+            </div>
+            <div>
+              <label style="display: block; margin-bottom: 8px; font-weight: 500;">Primary Color</label>
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <div style="width: 40px; height: 40px; background: var(--primary); border-radius: var(--radius); border: 1px solid var(--border);"></div>
+                <input type="color" value="#2563EB" style="border: none; background: none;">
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card">
+          <h4 style="margin-bottom: 16px;">OAuth Providers</h4>
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span>Google OAuth</span>
+              <span class="status-badge status-completed">Connected</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span>GitHub OAuth</span>
+              <span class="status-badge status-pending">Not Connected</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span>Microsoft OAuth</span>
+              <span class="status-badge status-pending">Not Connected</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<!-- Modals -->
+<div class="modal" id="projectDetailModal">
+  <div class="modal-content">
+    <h3>Project Details</h3>
+    <p><strong>Name:</strong> E-commerce Platform</p>
+    <p><strong>Client:</strong> TechCorp</p>
+    <p><strong>Status:</strong> Completed</p>
+    <p><strong>Progress:</strong> 100%</p>
+    <p><strong>Description:</strong> Full e-commerce solution with payment processing, inventory management, and admin dashboard.</p>
+    <div style="margin-top: 24px;">
+      <h4>Milestones</h4>
+      <ul>
+        <li>✓ Requirements gathering</li>
+        <li>✓ Design & prototyping</li>
+        <li>✓ Frontend development</li>
+        <li>✓ Backend development</li>
+        <li>✓ Testing & deployment</li>
+      </ul>
+    </div>
+    <div style="margin-top: 24px;">
+      <h4>Files</h4>
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <a href="#" style="color: var(--primary);">project-brief.pdf</a>
+        <a href="#" style="color: var(--primary);">final-designs.fig</a>
+        <a href="#" style="color: var(--primary);">deployment-guide.md</a>
+      </div>
+    </div>
+    <button class="button" onclick="closeModal('projectDetailModal')" style="margin-top: 24px;">Close</button>
+  </div>
+</div>
+
+<script>
+// Admin Dashboard Functionality
+document.addEventListener('DOMContentLoaded', function() {
+  // Sidebar navigation
+  const navItems = document.querySelectorAll('.sidebar-nav-item');
+  const contentSections = document.querySelectorAll('.content-section');
+  
+  navItems.forEach(item => {
+    item.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      // Remove active class from all nav items
+      navItems.forEach(nav => nav.classList.remove('active'));
+      
+      // Add active class to clicked item
+      this.classList.add('active');
+      
+      // Hide all content sections
+      contentSections.forEach(section => section.classList.remove('active'));
+      
+      // Show selected section
+      const sectionId = this.dataset.section;
+      document.getElementById(sectionId).classList.add('active');
+    });
+  });
+  
+  // Project view toggle
+  const tableViewBtn = document.getElementById('tableViewBtn');
+  const kanbanViewBtn = document.getElementById('kanbanViewBtn');
+  const projectsTable = document.getElementById('projectsTable');
+  const projectsKanban = document.getElementById('projectsKanban');
+  
+  if (tableViewBtn) {
+    tableViewBtn.addEventListener('click', function() {
+      projectsTable.style.display = 'block';
+      projectsKanban.style.display = 'none';
+      this.classList.add('primary');
+      this.classList.remove('secondary');
+      kanbanViewBtn.classList.add('secondary');
+      kanbanViewBtn.classList.remove('primary');
+    });
+  }
+  
+  if (kanbanViewBtn) {
+    kanbanViewBtn.addEventListener('click', function() {
+      projectsTable.style.display = 'none';
+      projectsKanban.style.display = 'grid';
+      this.classList.add('primary');
+      this.classList.remove('secondary');
+      tableViewBtn.classList.add('secondary');
+      tableViewBtn.classList.remove('primary');
+    });
+  }
+});
+
+function openModal(modalId) {
+  document.getElementById(modalId).classList.add('show');
+}
+
+function closeModal(modalId) {
+  document.getElementById(modalId).classList.remove('show');
+}
+
+// Close modal when clicking outside
+document.addEventListener('click', function(e) {
+  if (e.target.classList.contains('modal')) {
+    e.target.classList.remove('show');
+  }
+});
+</script>
+
+</body>
+</html>

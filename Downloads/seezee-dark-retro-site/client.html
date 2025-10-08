@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Client Portal — SeeZee Studio</title>
+  <link rel="stylesheet" href="assets/css/style.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    .client-header {
+      background: var(--primary);
+      color: white;
+      padding: 24px 0;
+    }
+    
+    .client-header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .client-header h1 {
+      color: white;
+      margin: 0;
+    }
+    
+    .client-header .user-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    .client-header .avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+    }
+    
+    .overview-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+    
+    .overview-card {
+      background: var(--background);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+    }
+    
+    .overview-card h3 {
+      margin-bottom: 16px;
+      color: var(--primary);
+    }
+    
+    .status-indicator {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+    
+    .status-active {
+      background: var(--success);
+    }
+    
+    .status-pending {
+      background: var(--warning);
+    }
+    
+    .status-completed {
+      background: var(--primary);
+    }
+    
+    .progress-bar {
+      width: 100%;
+      height: 8px;
+      background: var(--surface);
+      border-radius: 4px;
+      overflow: hidden;
+      margin: 8px 0;
+    }
+    
+    .progress-fill {
+      height: 100%;
+      background: var(--primary);
+      transition: width 0.3s ease;
+    }
+    
+    .data-table {
+      background: var(--background);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      margin-bottom: 32px;
+    }
+    
+    .table-header {
+      padding: 16px 24px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--surface);
+    }
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    
+    th, td {
+      padding: 12px 24px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    th {
+      background: var(--surface);
+      font-weight: 600;
+      color: var(--text);
+    }
+    
+    tr:hover {
+      background: var(--surface);
+    }
+    
+    .status-badge {
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 500;
+    }
+    
+    .status-paid {
+      background: rgba(34, 197, 94, 0.1);
+      color: var(--success);
+    }
+    
+    .status-pending {
+      background: rgba(245, 158, 11, 0.1);
+      color: var(--warning);
+    }
+    
+    .status-overdue {
+      background: rgba(220, 38, 38, 0.1);
+      color: var(--danger);
+    }
+    
+    .btn-small {
+      padding: 6px 12px;
+      font-size: 12px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+    
+    .btn-small:hover {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+    
+    .feed-container {
+      background: var(--background);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      margin-bottom: 32px;
+    }
+    
+    .message-thread {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      max-height: 400px;
+      overflow-y: auto;
+      margin-bottom: 16px;
+    }
+    
+    .message {
+      display: flex;
+      gap: 12px;
+      padding: 12px;
+      border-radius: var(--radius);
+      background: var(--surface);
+    }
+    
+    .message.from-client {
+      background: rgba(37, 99, 235, 0.1);
+      margin-left: 40px;
+    }
+    
+    .message.from-team {
+      background: var(--surface);
+      margin-right: 40px;
+    }
+    
+    .message-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 14px;
+      color: white;
+    }
+    
+    .message-content {
+      flex: 1;
+    }
+    
+    .message-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 4px;
+    }
+    
+    .message-author {
+      font-weight: 500;
+    }
+    
+    .message-time {
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+    
+    .composer {
+      border-top: 1px solid var(--border);
+      padding-top: 16px;
+    }
+    
+    .composer textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      resize: vertical;
+      min-height: 80px;
+      font-family: inherit;
+    }
+    
+    .composer-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 12px;
+    }
+    
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .modal.show {
+      display: flex;
+    }
+    
+    .modal-content {
+      background: var(--background);
+      padding: 32px;
+      border-radius: var(--radius-lg);
+      max-width: 600px;
+      width: 90%;
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+    
+    .support-form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    
+    .support-form input,
+    .support-form textarea,
+    .support-form select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      font-family: inherit;
+    }
+    
+    .support-form label {
+      font-weight: 500;
+      margin-bottom: 4px;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Client Header -->
+<header class="client-header">
+  <div class="container">
+    <div>
+      <div class="breadcrumb" style="color: rgba(255,255,255,0.8); margin-bottom: 4px;">
+        <a href="index.html" style="color: rgba(255,255,255,0.8);">Home</a> › Client Portal
+      </div>
+      <h1>Your Project</h1>
+    </div>
+    <div class="user-info">
+      <div style="text-align: right;">
+        <div style="font-weight: 600;">Jane Doe</div>
+        <div style="font-size: 14px; opacity: 0.8;">TechCorp</div>
+      </div>
+      <div class="avatar">JD</div>
+    </div>
+  </div>
+</header>
+
+<main style="padding: 32px 0; background: var(--surface); min-height: calc(100vh - 120px);">
+  <div class="container">
+    <!-- Overview Cards -->
+    <div class="overview-cards">
+      <div class="overview-card">
+        <h3>Project Status</h3>
+        <div class="status-indicator">
+          <div class="status-dot status-active"></div>
+          <span style="font-weight: 500;">In Progress</span>
+        </div>
+        <p style="color: var(--text-secondary); margin-bottom: 12px;">E-commerce Platform Development</p>
+        <div class="progress-bar">
+          <div class="progress-fill" style="width: 75%;"></div>
+        </div>
+        <div style="display: flex; justify-content: between; font-size: 14px; color: var(--text-secondary);">
+          <span>75% Complete</span>
+          <span>Phase 3 of 4</span>
+        </div>
+      </div>
+
+      <div class="overview-card">
+        <h3>Next Milestone</h3>
+        <div style="font-size: 18px; font-weight: 600; color: var(--primary); margin-bottom: 8px;">
+          October 15, 2025
+        </div>
+        <p style="color: var(--text-secondary); margin-bottom: 12px;">Payment Integration & Testing</p>
+        <div style="font-size: 14px; color: var(--text-secondary);">
+          5 days remaining
+        </div>
+      </div>
+
+      <div class="overview-card">
+        <h3>Assigned Team</h3>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <div style="width: 32px; height: 32px; border-radius: 50%; background: var(--primary); display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; font-size: 14px;">S</div>
+            <div>
+              <div style="font-weight: 500;">Sean</div>
+              <div style="font-size: 12px; color: var(--text-secondary);">Lead Developer</div>
+            </div>
+          </div>
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <div style="width: 32px; height: 32px; border-radius: 50%; background: var(--success); display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; font-size: 14px;">Z</div>
+            <div>
+              <div style="font-weight: 500;">Zach</div>
+              <div style="font-size: 12px; color: var(--text-secondary);">Frontend Developer</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Invoices Table -->
+    <div class="data-table">
+      <div class="table-header">
+        <h3>Invoices</h3>
+        <span style="color: var(--text-secondary); font-size: 14px;">Total: $25,000 | Paid: $12,500 | Outstanding: $12,500</span>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Invoice #</th>
+            <th>Date</th>
+            <th>Amount</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>#1025</td>
+            <td>October 1, 2025</td>
+            <td>$12,500</td>
+            <td><span class="status-badge status-paid">Paid</span></td>
+            <td>
+              <a href="#" class="btn-small" onclick="openModal('invoiceModal')">View Invoice</a>
+            </td>
+          </tr>
+          <tr>
+            <td>#1026</td>
+            <td>October 8, 2025</td>
+            <td>$12,500</td>
+            <td><span class="status-badge status-pending">Pending</span></td>
+            <td>
+              <a href="#" class="btn-small" onclick="openModal('invoiceModal')">View Invoice</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Message Feed -->
+    <div class="feed-container">
+      <h3 style="margin-bottom: 20px;">Project Messages</h3>
+      
+      <div class="message-thread">
+        <div class="message from-team">
+          <div class="message-avatar" style="background: var(--primary);">S</div>
+          <div class="message-content">
+            <div class="message-header">
+              <span class="message-author">Sean</span>
+              <span class="message-time">2 hours ago</span>
+            </div>
+            <p>Hi Jane! We've completed the user authentication system and it's ready for your review. You can test it on the staging environment using the credentials I sent earlier.</p>
+          </div>
+        </div>
+
+        <div class="message from-client">
+          <div class="message-avatar" style="background: var(--success);">J</div>
+          <div class="message-content">
+            <div class="message-header">
+              <span class="message-author">Jane Doe</span>
+              <span class="message-time">1 hour ago</span>
+            </div>
+            <p>Thanks Sean! I tested the authentication and it works perfectly. One question - can we add a "Remember Me" option on the login page?</p>
+          </div>
+        </div>
+
+        <div class="message from-team">
+          <div class="message-avatar" style="background: var(--warning);">Z</div>
+          <div class="message-content">
+            <div class="message-header">
+              <span class="message-author">Zach</span>
+              <span class="message-time">30 minutes ago</span>
+            </div>
+            <p>Absolutely! I'll add the "Remember Me" functionality to the login form. Should be ready by tomorrow. Also uploading the latest design mockups for the payment flow.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="composer">
+        <textarea placeholder="Type your message here..." id="messageInput"></textarea>
+        <div class="composer-actions">
+          <div style="font-size: 12px; color: var(--text-secondary);">
+            Messages are sent directly to your project team
+          </div>
+          <button class="button primary" onclick="sendMessage()">Send Message</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tasks Table -->
+    <div class="data-table">
+      <div class="table-header">
+        <h3>Project Tasks</h3>
+        <span style="color: var(--text-secondary); font-size: 14px;">Read-only view</span>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Task</th>
+            <th>Status</th>
+            <th>Assignee</th>
+            <th>Due Date</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>User Authentication System</td>
+            <td><span class="status-badge status-paid">Completed</span></td>
+            <td>Sean</td>
+            <td>Oct 8, 2025</td>
+            <td>
+              <button class="btn-small" onclick="openModal('taskModal')">View Details</button>
+            </td>
+          </tr>
+          <tr>
+            <td>Payment Integration</td>
+            <td><span class="status-badge status-pending">In Progress</span></td>
+            <td>Sean</td>
+            <td>Oct 15, 2025</td>
+            <td>
+              <button class="btn-small" onclick="openModal('taskModal')">View Details</button>
+            </td>
+          </tr>
+          <tr>
+            <td>Admin Dashboard UI</td>
+            <td><span class="status-badge status-pending">In Progress</span></td>
+            <td>Zach</td>
+            <td>Oct 18, 2025</td>
+            <td>
+              <button class="btn-small" onclick="openModal('taskModal')">View Details</button>
+            </td>
+          </tr>
+          <tr>
+            <td>Mobile Responsive Design</td>
+            <td><span class="status-badge status-pending">Pending</span></td>
+            <td>Zach</td>
+            <td>Oct 22, 2025</td>
+            <td>
+              <button class="btn-small" onclick="openModal('taskModal')">View Details</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Support Section -->
+    <div class="overview-card">
+      <h3>Need Help?</h3>
+      <p style="color: var(--text-secondary); margin-bottom: 16px;">
+        Have questions about your project or need assistance? Our team is here to help.
+      </p>
+      <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+        <button class="button primary" onclick="openModal('supportModal')">Open Support Request</button>
+        <a href="mailto:contact@seezee.dev" class="button secondary">Email Direct</a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- Modals -->
+
+<!-- Invoice Detail Modal -->
+<div class="modal" id="invoiceModal">
+  <div class="modal-content">
+    <h3 style="margin-bottom: 24px;">Invoice Details</h3>
+    
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px;">
+      <div>
+        <h4>Invoice Information</h4>
+        <p><strong>Invoice #:</strong> 1025</p>
+        <p><strong>Date:</strong> October 1, 2025</p>
+        <p><strong>Due Date:</strong> October 31, 2025</p>
+        <p><strong>Status:</strong> <span class="status-badge status-paid">Paid</span></p>
+      </div>
+      <div>
+        <h4>Billing Information</h4>
+        <p><strong>Bill To:</strong><br>
+        TechCorp<br>
+        Jane Doe<br>
+        jane@techcorp.com</p>
+      </div>
+    </div>
+
+    <div style="margin-bottom: 24px;">
+      <h4>Line Items</h4>
+      <table style="width: 100%; border: 1px solid var(--border); border-radius: var(--radius);">
+        <thead>
+          <tr style="background: var(--surface);">
+            <th style="padding: 12px;">Description</th>
+            <th style="padding: 12px;">Hours</th>
+            <th style="padding: 12px;">Rate</th>
+            <th style="padding: 12px;">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding: 12px;">Frontend Development</td>
+            <td style="padding: 12px;">40</td>
+            <td style="padding: 12px;">$150</td>
+            <td style="padding: 12px;">$6,000</td>
+          </tr>
+          <tr>
+            <td style="padding: 12px;">Backend Development</td>
+            <td style="padding: 12px;">35</td>
+            <td style="padding: 12px;">$150</td>
+            <td style="padding: 12px;">$5,250</td>
+          </tr>
+          <tr>
+            <td style="padding: 12px;">Project Management</td>
+            <td style="padding: 12px;">10</td>
+            <td style="padding: 12px;">$125</td>
+            <td style="padding: 12px;">$1,250</td>
+          </tr>
+          <tr style="background: var(--surface); font-weight: 600;">
+            <td style="padding: 12px;" colspan="3">Total</td>
+            <td style="padding: 12px;">$12,500</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div style="display: flex; gap: 12px;">
+      <button class="button primary">Download PDF</button>
+      <button class="button secondary" onclick="closeModal('invoiceModal')">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- Task Detail Modal -->
+<div class="modal" id="taskModal">
+  <div class="modal-content">
+    <h3 style="margin-bottom: 24px;">Task Details</h3>
+    
+    <div style="margin-bottom: 24px;">
+      <h4>User Authentication System</h4>
+      <p style="color: var(--text-secondary); margin-bottom: 16px;">
+        Implementation of secure user authentication including login, registration, password reset, and session management.
+      </p>
+      
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+        <div>
+          <strong>Status:</strong> <span class="status-badge status-paid">Completed</span>
+        </div>
+        <div>
+          <strong>Assignee:</strong> Sean
+        </div>
+        <div>
+          <strong>Due Date:</strong> Oct 8, 2025
+        </div>
+        <div>
+          <strong>Completed:</strong> Oct 7, 2025
+        </div>
+      </div>
+
+      <h4>Deliverables</h4>
+      <ul>
+        <li>✓ User registration form with validation</li>
+        <li>✓ Secure login system with JWT tokens</li>
+        <li>✓ Password reset functionality</li>
+        <li>✓ Session management and logout</li>
+        <li>✓ Email verification system</li>
+      </ul>
+
+      <h4>Notes</h4>
+      <p style="color: var(--text-secondary);">
+        Authentication system completed ahead of schedule. All security best practices implemented including password hashing, rate limiting, and secure session handling.
+      </p>
+    </div>
+
+    <button class="button secondary" onclick="closeModal('taskModal')">Close</button>
+  </div>
+</div>
+
+<!-- Support Request Modal -->
+<div class="modal" id="supportModal">
+  <div class="modal-content">
+    <h3 style="margin-bottom: 24px;">Open Support Request</h3>
+    
+    <form class="support-form" onsubmit="submitSupportRequest(event)">
+      <div>
+        <label for="requestType">Request Type</label>
+        <select id="requestType" name="requestType" required>
+          <option value="">Select type</option>
+          <option value="question">General Question</option>
+          <option value="bug">Bug Report</option>
+          <option value="feature">Feature Request</option>
+          <option value="change">Change Request</option>
+          <option value="urgent">Urgent Issue</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="requestTitle">Subject</label>
+        <input type="text" id="requestTitle" name="requestTitle" placeholder="Brief description of your request" required>
+      </div>
+
+      <div>
+        <label for="requestMessage">Description</label>
+        <textarea id="requestMessage" name="requestMessage" rows="5" placeholder="Please provide detailed information about your request..." required></textarea>
+      </div>
+
+      <div>
+        <label for="priority">Priority</label>
+        <select id="priority" name="priority" required>
+          <option value="">Select priority</option>
+          <option value="low">Low - General inquiry</option>
+          <option value="medium">Medium - Standard request</option>
+          <option value="high">High - Blocking issue</option>
+          <option value="urgent">Urgent - Critical issue</option>
+        </select>
+      </div>
+
+      <div style="display: flex; gap: 12px; justify-content: end;">
+        <button type="button" class="button secondary" onclick="closeModal('supportModal')">Cancel</button>
+        <button type="submit" class="button primary">Submit Request</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Success Modal -->
+<div class="modal" id="successModal">
+  <div class="modal-content" style="text-align: center;">
+    <h3 style="color: var(--success); margin-bottom: 16px;">Request Submitted!</h3>
+    <p style="margin-bottom: 24px;">Your support request has been submitted. We'll respond within 24 hours during business days.</p>
+    <button class="button primary" onclick="closeModal('successModal')">Close</button>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="grid cols-4">
+      <div>
+        <div class="brand" style="margin-bottom: 16px;">
+          <div class="logo">SZ</div>
+          <span>SeeZee Studio</span>
+        </div>
+        <p class="text-secondary">Clean, fast websites and apps for teams that ship.</p>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <a href="services.html#websites">Websites</a>
+          <a href="services.html#apps">Web Apps</a>
+          <a href="services.html#data">Integrations</a>
+          <a href="about.html">About</a>
+        </div>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <a href="about.html">About</a>
+          <a href="buy.html">Buy</a>
+          <a href="#">Admin</a>
+          <a href="#">Contact</a>
+        </div>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p>contact@seezee.dev</p>
+        <p class="text-secondary">San Francisco, CA</p>
+        <div style="margin-top: 16px;">
+          <a href="#" style="margin-right: 16px;">GitHub</a>
+          <a href="#" style="margin-right: 16px;">LinkedIn</a>
+          <a href="#">Twitter</a>
+        </div>
+      </div>
+    </div>
+    <div class="copyright">
+      © 2025 SeeZee Studio. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+<script>
+// Client Portal Functionality
+function openModal(modalId) {
+  document.getElementById(modalId).classList.add('show');
+}
+
+function closeModal(modalId) {
+  document.getElementById(modalId).classList.remove('show');
+}
+
+function sendMessage() {
+  const messageInput = document.getElementById('messageInput');
+  const message = messageInput.value.trim();
+  
+  if (!message) {
+    alert('Please enter a message');
+    return;
+  }
+  
+  // In a real app, this would send to the server
+  const messageThread = document.querySelector('.message-thread');
+  const newMessage = document.createElement('div');
+  newMessage.className = 'message from-client';
+  newMessage.innerHTML = `
+    <div class="message-avatar" style="background: var(--success);">J</div>
+    <div class="message-content">
+      <div class="message-header">
+        <span class="message-author">Jane Doe</span>
+        <span class="message-time">Just now</span>
+      </div>
+      <p>${message}</p>
+    </div>
+  `;
+  
+  messageThread.appendChild(newMessage);
+  messageInput.value = '';
+  
+  // Scroll to bottom
+  messageThread.scrollTop = messageThread.scrollHeight;
+}
+
+function submitSupportRequest(event) {
+  event.preventDefault();
+  
+  const formData = new FormData(event.target);
+  const requestData = Object.fromEntries(formData);
+  
+  // In a real app, this would submit to the server
+  console.log('Support request:', requestData);
+  
+  // Close support modal and show success
+  closeModal('supportModal');
+  openModal('successModal');
+  
+  // Reset form
+  event.target.reset();
+}
+
+// Close modal when clicking outside
+document.addEventListener('click', function(e) {
+  if (e.target.classList.contains('modal')) {
+    e.target.classList.remove('show');
+  }
+});
+
+// Handle Enter key in message input
+document.getElementById('messageInput').addEventListener('keypress', function(e) {
+  if (e.key === 'Enter' && !e.shiftKey) {
+    e.preventDefault();
+    sendMessage();
+  }
+});
+</script>
+
+</body>
+</html>
