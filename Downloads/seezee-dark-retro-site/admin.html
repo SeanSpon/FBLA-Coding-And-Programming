@@ -261,6 +261,248 @@
       font-weight: 600;
       color: #0A0B0F;
       cursor: pointer;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+    
+    .user-avatar:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(0, 230, 160, 0.3);
+    }
+    
+    .user-dropdown {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 8px 0;
+      min-width: 200px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all 0.3s ease;
+      z-index: 1000;
+      backdrop-filter: blur(20px);
+    }
+    
+    .user-dropdown.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    
+    .user-dropdown-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      color: var(--text-primary);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .user-dropdown-item:hover {
+      background: rgba(0, 230, 160, 0.1);
+      color: var(--primary-emerald);
+    }
+    
+    .user-dropdown-separator {
+      height: 1px;
+      background: var(--border);
+      margin: 8px 0;
+    }
+    
+    .profile-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    
+    .profile-avatar {
+      width: 120px;
+      height: 120px;
+      background: linear-gradient(135deg, #00E6A0, #00C3FF);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+      font-weight: 700;
+      color: #0A0B0F;
+      margin: 0 auto 24px;
+      position: relative;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .profile-avatar:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 30px rgba(0, 230, 160, 0.3);
+    }
+    
+    .profile-avatar .edit-overlay {
+      position: absolute;
+      bottom: 8px;
+      right: 8px;
+      width: 32px;
+      height: 32px;
+      background: rgba(0,0,0,0.7);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .profile-avatar:hover .edit-overlay {
+      opacity: 1;
+    }
+    
+    .profile-name {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+    
+    .profile-role {
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+    }
+    
+    .profile-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 24px;
+    }
+    
+    .profile-stat {
+      text-align: center;
+    }
+    
+    .profile-stat-value {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--primary-emerald);
+    }
+    
+    .profile-stat-label {
+      font-size: 12px;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .form-section {
+      margin-bottom: 32px;
+    }
+    
+    .form-section h4 {
+      color: var(--text-primary);
+      margin-bottom: 16px;
+      font-size: 18px;
+      font-weight: 600;
+    }
+    
+    .form-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    
+    .form-field {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .form-field label {
+      margin-bottom: 8px;
+      color: var(--text-primary);
+      font-weight: 500;
+      font-size: 14px;
+    }
+    
+    .form-field input,
+    .form-field select,
+    .form-field textarea {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px;
+      color: var(--text-primary);
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+    
+    .form-field input:focus,
+    .form-field select:focus,
+    .form-field textarea:focus {
+      outline: none;
+      border-color: var(--primary-emerald);
+      box-shadow: 0 0 0 3px rgba(0, 230, 160, 0.1);
+    }
+    
+    .toggle-switch {
+      position: relative;
+      width: 50px;
+      height: 24px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .toggle-switch.active {
+      background: var(--primary-emerald);
+    }
+    
+    .toggle-switch::after {
+      content: '';
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 20px;
+      height: 20px;
+      background: white;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+    }
+    
+    .toggle-switch.active::after {
+      transform: translateX(26px);
+    }
+    
+    .preference-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .preference-item:last-child {
+      border-bottom: none;
+    }
+    
+    .preference-info h5 {
+      margin: 0 0 4px 0;
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+    
+    .preference-info p {
+      margin: 0;
+      color: var(--text-secondary);
+      font-size: 12px;
     }
     
     /* Fix content sections display */
@@ -595,6 +837,10 @@
           <span class="icon">⚙️</span>
           <span>Settings</span>
         </a>
+        <a href="#" class="sidebar-nav-item" data-section="profile">
+          <span class="icon">👤</span>
+          <span>Profile</span>
+        </a>
       </div>
     </div>
   </nav>
@@ -612,7 +858,33 @@
           <span>🔔</span>
           <span class="badge">3</span>
         </div>
-        <div class="user-avatar">SC</div>
+        <div class="user-avatar" onclick="toggleUserDropdown()">
+          SC
+          <div class="user-dropdown" id="userDropdown">
+            <a href="#" class="user-dropdown-item" onclick="switchToSection('profile')">
+              <span>👤</span>
+              <span>View Profile</span>
+            </a>
+            <a href="#" class="user-dropdown-item" onclick="switchToSection('settings')">
+              <span>⚙️</span>
+              <span>Account Settings</span>
+            </a>
+            <div class="user-dropdown-separator"></div>
+            <a href="#" class="user-dropdown-item">
+              <span>🌙</span>
+              <span>Dark Mode</span>
+            </a>
+            <a href="#" class="user-dropdown-item">
+              <span>📊</span>
+              <span>Activity Log</span>
+            </a>
+            <div class="user-dropdown-separator"></div>
+            <a href="signin.html" class="user-dropdown-item">
+              <span>🚪</span>
+              <span>Sign Out</span>
+            </a>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -1128,6 +1400,198 @@
       </div>
     </section>
 
+    <!-- Profile Section -->
+    <section class="content-section" id="profile">
+      <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 24px;">
+        <!-- Profile Card -->
+        <div class="profile-card">
+          <div class="profile-avatar">
+            SC
+            <div class="edit-overlay">📷</div>
+          </div>
+          <div class="profile-name">Sean McCulloch</div>
+          <div class="profile-role">Full-Stack Developer & Founder</div>
+          <div style="display: flex; gap: 12px; justify-content: center; margin-top: 16px;">
+            <button class="button primary">Edit Profile</button>
+            <button class="button secondary">Change Photo</button>
+          </div>
+          
+          <div class="profile-stats">
+            <div class="profile-stat">
+              <div class="profile-stat-value">12</div>
+              <div class="profile-stat-label">Projects</div>
+            </div>
+            <div class="profile-stat">
+              <div class="profile-stat-value">34</div>
+              <div class="profile-stat-label">Clients</div>
+            </div>
+            <div class="profile-stat">
+              <div class="profile-stat-value">94%</div>
+              <div class="profile-stat-label">Success Rate</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Profile Details -->
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Profile Information</h3>
+            <button class="button primary">Save Changes</button>
+          </div>
+          
+          <div class="form-section">
+            <h4>Personal Information</h4>
+            <div class="form-row">
+              <div class="form-field">
+                <label>First Name</label>
+                <input type="text" value="Sean" placeholder="Enter first name">
+              </div>
+              <div class="form-field">
+                <label>Last Name</label>
+                <input type="text" value="McCulloch" placeholder="Enter last name">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-field">
+                <label>Email Address</label>
+                <input type="email" value="sean@seezee.studio" placeholder="Enter email">
+              </div>
+              <div class="form-field">
+                <label>Phone Number</label>
+                <input type="tel" value="+1 (555) 123-4567" placeholder="Enter phone">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-field">
+                <label>Job Title</label>
+                <input type="text" value="Full-Stack Developer & Founder" placeholder="Enter job title">
+              </div>
+              <div class="form-field">
+                <label>Company</label>
+                <input type="text" value="SeeZee Studio" placeholder="Enter company">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h4>Contact Information</h4>
+            <div class="form-row">
+              <div class="form-field">
+                <label>Location</label>
+                <input type="text" value="San Francisco, CA" placeholder="Enter location">
+              </div>
+              <div class="form-field">
+                <label>Timezone</label>
+                <select>
+                  <option>UTC-8 (Pacific Time)</option>
+                  <option>UTC-5 (Eastern Time)</option>
+                  <option>UTC+0 (GMT)</option>
+                  <option>UTC+1 (Central European Time)</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-field">
+              <label>Bio</label>
+              <textarea rows="3" placeholder="Tell us about yourself...">Passionate full-stack developer with 8+ years of experience building modern web applications. Founder of SeeZee Studio, specializing in cutting-edge user experiences and scalable backend solutions.</textarea>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h4>Social Links</h4>
+            <div class="form-row">
+              <div class="form-field">
+                <label>GitHub</label>
+                <input type="url" value="https://github.com/SeanSpon" placeholder="GitHub profile URL">
+              </div>
+              <div class="form-field">
+                <label>LinkedIn</label>
+                <input type="url" value="" placeholder="LinkedIn profile URL">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-field">
+                <label>Portfolio Website</label>
+                <input type="url" value="https://seezee.studio" placeholder="Portfolio URL">
+              </div>
+              <div class="form-field">
+                <label>Twitter</label>
+                <input type="url" value="" placeholder="Twitter profile URL">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Activity & Preferences -->
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 24px;">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Recent Activity</h3>
+            <button class="button secondary">View All</button>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 16px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--border);">
+              <div>
+                <div style="font-weight: 600; color: var(--text-primary);">Updated project status</div>
+                <div style="font-size: 12px; color: var(--text-secondary);">E-commerce Platform - TechCorp</div>
+              </div>
+              <div style="font-size: 12px; color: var(--text-secondary);">2 hours ago</div>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--border);">
+              <div>
+                <div style="font-weight: 600; color: var(--text-primary);">Added new client</div>
+                <div style="font-size: 12px; color: var(--text-secondary);">Sarah Johnson - StartupXYZ</div>
+              </div>
+              <div style="font-size: 12px; color: var(--text-secondary);">1 day ago</div>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--border);">
+              <div>
+                <div style="font-weight: 600; color: var(--text-primary);">Generated invoice</div>
+                <div style="font-size: 12px; color: var(--text-secondary);">#INV-002 - $15,000</div>
+              </div>
+              <div style="font-size: 12px; color: var(--text-secondary);">2 days ago</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Quick Preferences</h3>
+          </div>
+          <div>
+            <div class="preference-item">
+              <div class="preference-info">
+                <h5>Email Notifications</h5>
+                <p>Receive notifications about project updates</p>
+              </div>
+              <div class="toggle-switch active" onclick="toggleSwitch(this)"></div>
+            </div>
+            <div class="preference-item">
+              <div class="preference-info">
+                <h5>Desktop Notifications</h5>
+                <p>Show browser notifications for important events</p>
+              </div>
+              <div class="toggle-switch" onclick="toggleSwitch(this)"></div>
+            </div>
+            <div class="preference-item">
+              <div class="preference-info">
+                <h5>Two-Factor Authentication</h5>
+                <p>Enhanced security for your account</p>
+              </div>
+              <div class="toggle-switch active" onclick="toggleSwitch(this)"></div>
+            </div>
+            <div class="preference-item">
+              <div class="preference-info">
+                <h5>Auto-save Changes</h5>
+                <p>Automatically save changes as you type</p>
+              </div>
+              <div class="toggle-switch active" onclick="toggleSwitch(this)"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Settings Section -->
     <section class="content-section" id="settings">
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 24px;">
@@ -1244,6 +1708,42 @@ document.addEventListener('DOMContentLoaded', function() {
     const newSection = (location.hash.replace('#', '') || 'dashboard').toLowerCase();
     switchToSection(newSection);
   });
+});
+
+// Toggle user dropdown
+function toggleUserDropdown() {
+  const dropdown = document.querySelector('.user-dropdown');
+  if (dropdown) {
+    dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+  }
+}
+
+// Close dropdown when clicking outside
+document.addEventListener('click', function(e) {
+  const userMenu = document.querySelector('.user-menu');
+  const dropdown = document.querySelector('.user-dropdown');
+  
+  if (userMenu && dropdown && !userMenu.contains(e.target)) {
+    dropdown.style.display = 'none';
+  }
+});
+
+// Toggle switch functionality
+function toggleSwitch(element) {
+  element.classList.toggle('active');
+}
+
+// Dark mode toggle
+function toggleDarkMode() {
+  document.body.classList.toggle('dark-mode');
+  localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+}
+
+// Initialize dark mode from localStorage
+document.addEventListener('DOMContentLoaded', function() {
+  if (localStorage.getItem('darkMode') === 'true') {
+    document.body.classList.add('dark-mode');
+  }
 });
 </script>
 
