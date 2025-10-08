@@ -24,24 +24,20 @@
       overflow-x: hidden;
     }
     
-    /* admin layout hardening */
     .admin-layout {
-      display: grid !important;
-      grid-template-columns: 260px 1fr !important;
-      gap: 0 !important;
-      min-height: 100vh !important;
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      min-height: 100vh;
     }
     
     .sidebar {
-      position: sticky;
-      top: 0;
-      height: 100dvh;
-      width: 100%;
-      max-width: 260px;
-      overflow: auto;
       background: rgba(255,255,255,0.02);
       border-right: 1px solid var(--border);
       backdrop-filter: blur(20px);
+      position: fixed;
+      height: 100vh;
+      width: 280px;
+      overflow-y: auto;
       z-index: 100;
     }
     
@@ -147,11 +143,8 @@
     }
     
     .main-content {
-      width: 100% !important;
-      max-width: none !important;
-      min-width: 0 !important;
-      padding: 24px !important;
-      overflow: auto !important;
+      margin-left: 280px;
+      padding: 32px;
       background: var(--background);
       min-height: 100vh;
     }
@@ -263,29 +256,12 @@
       cursor: pointer;
     }
     
-    /* Fix content sections display */
-    .content-section { 
-      display: block !important; 
-    }
-
-    /* Only hide inactive sections if using tab logic */
-    .content-section:not(.active) {
-      display: none !important;
+    .content-section {
+      display: none;
     }
     
-    /* Prevent cards/panels from forcing tiny columns */
-    .stats-grid, .data-table, .card, .link-item, .db-table-card {
-      width: 100% !important;
-      max-width: none !important;
-    }
-    
-    table { 
-      width: 100% !important; 
-    }
-    
-    /* Kill rogue max-widths */
-    .main-content > * {
-      max-width: none !important;
+    .content-section.active {
+      display: block;
     }
     
     .stats-grid {
@@ -521,15 +497,12 @@
     
     @media (max-width: 1024px) {
       .admin-layout {
-        grid-template-columns: 1fr !important;
+        grid-template-columns: 1fr;
       }
       
       .sidebar {
-        position: fixed;
         transform: translateX(-100%);
         transition: transform 0.3s ease;
-        width: 260px;
-        z-index: 1000;
       }
       
       .sidebar.open {
@@ -537,7 +510,7 @@
       }
       
       .main-content {
-        padding: 16px !important;
+        margin-left: 0;
       }
     }
   </style>
@@ -731,181 +704,6 @@
       </div>
     </section>
 
-    <!-- Analytics Section -->
-    <section class="content-section" id="analytics">
-      <div class="card">
-        <div class="card-header">
-          <h3 class="card-title">Analytics Overview</h3>
-          <select class="button secondary">
-            <option>Last 30 days</option>
-            <option>Last 90 days</option>
-            <option>Last year</option>
-          </select>
-        </div>
-        <div style="height: 400px; display: flex; align-items: center; justify-content: center; color: var(--text-secondary);">
-          📊 Analytics charts would be displayed here
-        </div>
-      </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section class="content-section" id="projects">
-      <div class="card">
-        <div class="card-header">
-          <h3 class="card-title">All Projects</h3>
-          <div style="display: flex; gap: 12px;">
-            <select class="button secondary">
-              <option>All Status</option>
-              <option>Active</option>
-              <option>Completed</option>
-              <option>On Hold</option>
-            </select>
-            <button class="button primary">New Project</button>
-          </div>
-        </div>
-        
-        <div class="data-table">
-          <table>
-            <thead>
-              <tr>
-                <th>Project Name</th>
-                <th>Client</th>
-                <th>Type</th>
-                <th>Status</th>
-                <th>Progress</th>
-                <th>Budget</th>
-                <th>Due Date</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>E-commerce Platform</td>
-                <td>TechCorp</td>
-                <td>Web App</td>
-                <td><span class="status-badge status-completed">Completed</span></td>
-                <td>100%</td>
-                <td>$25,000</td>
-                <td>Oct 5, 2025</td>
-                <td>
-                  <div class="action-buttons">
-                    <button class="btn-small">View</button>
-                    <button class="btn-small">Edit</button>
-                    <button class="btn-small">Invoice</button>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>SaaS Dashboard</td>
-                <td>StartupXYZ</td>
-                <td>Dashboard</td>
-                <td><span class="status-badge status-active">Active</span></td>
-                <td>75%</td>
-                <td>$15,000</td>
-                <td>Oct 15, 2025</td>
-                <td>
-                  <div class="action-buttons">
-                    <button class="btn-small">View</button>
-                    <button class="btn-small">Edit</button>
-                    <button class="btn-small">Update</button>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>Mobile Web App</td>
-                <td>LocalBiz</td>
-                <td>Mobile App</td>
-                <td><span class="status-badge status-pending">In Review</span></td>
-                <td>90%</td>
-                <td>$8,500</td>
-                <td>Oct 20, 2025</td>
-                <td>
-                  <div class="action-buttons">
-                    <button class="btn-small">View</button>
-                    <button class="btn-small">Edit</button>
-                    <button class="btn-small">Review</button>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-
-    <!-- Clients Section -->
-    <section class="content-section" id="clients">
-      <div class="card">
-        <div class="card-header">
-          <h3 class="card-title">Client Management</h3>
-          <button class="button primary">Add Client</button>
-        </div>
-        
-        <div class="data-table">
-          <table>
-            <thead>
-              <tr>
-                <th>Client Name</th>
-                <th>Company</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Projects</th>
-                <th>Status</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>John Smith</td>
-                <td>TechCorp</td>
-                <td>john@techcorp.com</td>
-                <td>+1 (555) 123-4567</td>
-                <td>3</td>
-                <td><span class="status-badge status-active">Active</span></td>
-                <td>
-                  <div class="action-buttons">
-                    <button class="btn-small">View</button>
-                    <button class="btn-small">Edit</button>
-                    <button class="btn-small">Contact</button>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>Sarah Johnson</td>
-                <td>StartupXYZ</td>
-                <td>sarah@startupxyz.com</td>
-                <td>+1 (555) 987-6543</td>
-                <td>2</td>
-                <td><span class="status-badge status-active">Active</span></td>
-                <td>
-                  <div class="action-buttons">
-                    <button class="btn-small">View</button>
-                    <button class="btn-small">Edit</button>
-                    <button class="btn-small">Contact</button>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>Mike Wilson</td>
-                <td>LocalBiz</td>
-                <td>mike@localbiz.com</td>
-                <td>+1 (555) 456-7890</td>
-                <td>1</td>
-                <td><span class="status-badge status-active">Active</span></td>
-                <td>
-                  <div class="action-buttons">
-                    <button class="btn-small">View</button>
-                    <button class="btn-small">Edit</button>
-                    <button class="btn-small">Contact</button>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-
     <!-- Links Manager Section -->
     <section class="content-section" id="links">
       <div class="card">
@@ -1034,152 +832,6 @@
       </div>
     </section>
 
-    <!-- Finances Section -->
-    <section class="content-section" id="finances">
-      <div class="stats-grid">
-        <div class="stat-card">
-          <div class="stat-header">
-            <span class="stat-title">Monthly Revenue</span>
-            <div class="stat-icon">💰</div>
-          </div>
-          <div class="stat-value">$45.2K</div>
-          <div class="stat-change positive">+12% vs last month</div>
-        </div>
-        
-        <div class="stat-card">
-          <div class="stat-header">
-            <span class="stat-title">Outstanding Invoices</span>
-            <div class="stat-icon">📄</div>
-          </div>
-          <div class="stat-value">$8.7K</div>
-          <div class="stat-change negative">3 overdue</div>
-        </div>
-        
-        <div class="stat-card">
-          <div class="stat-header">
-            <span class="stat-title">Expenses</span>
-            <div class="stat-icon">📊</div>
-          </div>
-          <div class="stat-value">$12.1K</div>
-          <div class="stat-change positive">-5% vs last month</div>
-        </div>
-        
-        <div class="stat-card">
-          <div class="stat-header">
-            <span class="stat-title">Profit Margin</span>
-            <div class="stat-icon">📈</div>
-          </div>
-          <div class="stat-value">73%</div>
-          <div class="stat-change positive">+2% improvement</div>
-        </div>
-      </div>
-      
-      <div class="card">
-        <div class="card-header">
-          <h3 class="card-title">Recent Invoices</h3>
-          <button class="button primary">Create Invoice</button>
-        </div>
-        
-        <div class="data-table">
-          <table>
-            <thead>
-              <tr>
-                <th>Invoice #</th>
-                <th>Client</th>
-                <th>Project</th>
-                <th>Amount</th>
-                <th>Status</th>
-                <th>Due Date</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>#INV-001</td>
-                <td>TechCorp</td>
-                <td>E-commerce Platform</td>
-                <td>$25,000</td>
-                <td><span class="status-badge status-completed">Paid</span></td>
-                <td>Oct 5, 2025</td>
-                <td>
-                  <div class="action-buttons">
-                    <button class="btn-small">View</button>
-                    <button class="btn-small">Download</button>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>#INV-002</td>
-                <td>StartupXYZ</td>
-                <td>SaaS Dashboard</td>
-                <td>$15,000</td>
-                <td><span class="status-badge status-pending">Pending</span></td>
-                <td>Oct 15, 2025</td>
-                <td>
-                  <div class="action-buttons">
-                    <button class="btn-small">View</button>
-                    <button class="btn-small">Send Reminder</button>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-
-    <!-- Settings Section -->
-    <section class="content-section" id="settings">
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 24px;">
-        <div class="card">
-          <h4 style="margin-bottom: 20px; color: var(--text-primary);">General Settings</h4>
-          <div style="display: flex; flex-direction: column; gap: 16px;">
-            <div>
-              <label style="display: block; margin-bottom: 8px; color: var(--text-primary); font-weight: 500;">Company Name</label>
-              <input type="text" value="SeeZee Studio" style="width: 100%; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 12px; color: var(--text-primary);">
-            </div>
-            <div>
-              <label style="display: block; margin-bottom: 8px; color: var(--text-primary); font-weight: 500;">Contact Email</label>
-              <input type="email" value="hello@seezee.studio" style="width: 100%; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 12px; color: var(--text-primary);">
-            </div>
-            <div>
-              <label style="display: block; margin-bottom: 8px; color: var(--text-primary); font-weight: 500;">Phone Number</label>
-              <input type="tel" value="+1 (555) 123-4567" style="width: 100%; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 12px; color: var(--text-primary);">
-            </div>
-            <div>
-              <label style="display: block; margin-bottom: 8px; color: var(--text-primary); font-weight: 500;">Timezone</label>
-              <select style="width: 100%; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 12px; color: var(--text-primary);">
-                <option>UTC-5 (Eastern Time)</option>
-                <option>UTC-8 (Pacific Time)</option>
-                <option>UTC+0 (GMT)</option>
-              </select>
-            </div>
-          </div>
-          <button class="button primary" style="margin-top: 20px;">Save Changes</button>
-        </div>
-        
-        <div class="card">
-          <h4 style="margin-bottom: 20px; color: var(--text-primary);">Security Settings</h4>
-          <div style="display: flex; flex-direction: column; gap: 16px;">
-            <div style="display: flex; justify-content: space-between; align-items: center;">
-              <span style="color: var(--text-primary);">Two-Factor Authentication</span>
-              <span class="status-badge status-completed">Enabled</span>
-            </div>
-            <div style="display: flex; justify-content: space-between; align-items: center;">
-              <span style="color: var(--text-primary);">Email Notifications</span>
-              <span class="status-badge status-active">On</span>
-            </div>
-            <div style="display: flex; justify-content: space-between; align-items: center;">
-              <span style="color: var(--text-primary);">Login Alerts</span>
-              <span class="status-badge status-active">On</span>
-            </div>
-            <button class="button secondary">Change Password</button>
-            <button class="button secondary">Download Backup Codes</button>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- Other sections (projects, clients, analytics, finances, settings) would go here -->
   </main>
 </div>
@@ -1187,62 +839,35 @@
 <script>
 // Admin Dashboard Functionality
 document.addEventListener('DOMContentLoaded', function() {
-  // Auto-activate the correct section by URL path
-  const urlKey = (location.hash.replace('#', '') || 'dashboard').toLowerCase();
-  
   // Sidebar navigation
   const navItems = document.querySelectorAll('.sidebar-nav-item');
   const contentSections = document.querySelectorAll('.content-section');
   const pageTitle = document.querySelector('.page-title');
   
-  // Function to switch sections
-  function switchToSection(sectionId) {
-    // Remove active class from all nav items
-    navItems.forEach(nav => nav.classList.remove('active'));
-    
-    // Add active class to clicked item
-    const activeNavItem = document.querySelector(`[data-section="${sectionId}"]`);
-    if (activeNavItem) {
-      activeNavItem.classList.add('active');
-    }
-    
-    // Hide all content sections
-    contentSections.forEach(section => section.classList.remove('active'));
-    
-    // Show selected section
-    const targetSection = document.getElementById(sectionId);
-    if (targetSection) {
-      targetSection.classList.add('active');
-      
-      // Update page title
-      const sectionName = activeNavItem ? activeNavItem.textContent.trim() : sectionId;
-      if (pageTitle) {
-        pageTitle.textContent = sectionName;
-      }
-      
-      // Update URL hash
-      window.location.hash = sectionId;
-    }
-  }
-  
-  // Initialize with URL-based section or default to dashboard
-  switchToSection(urlKey);
-  
-  // Add click handlers to navigation items
   navItems.forEach(item => {
     item.addEventListener('click', function(e) {
       e.preventDefault();
+      
+      // Remove active class from all nav items
+      navItems.forEach(nav => nav.classList.remove('active'));
+      
+      // Add active class to clicked item
+      this.classList.add('active');
+      
+      // Hide all content sections
+      contentSections.forEach(section => section.classList.remove('active'));
+      
+      // Show selected section
       const sectionId = this.dataset.section;
-      if (sectionId) {
-        switchToSection(sectionId);
+      const targetSection = document.getElementById(sectionId);
+      if (targetSection) {
+        targetSection.classList.add('active');
+        
+        // Update page title
+        const sectionName = this.textContent.trim();
+        pageTitle.textContent = sectionName;
       }
     });
-  });
-  
-  // Handle browser back/forward
-  window.addEventListener('hashchange', function() {
-    const newSection = (location.hash.replace('#', '') || 'dashboard').toLowerCase();
-    switchToSection(newSection);
   });
 });
 </script>
