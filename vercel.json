@@ -1,8 +1,9 @@
 {
-  "buildCommand": "cd big-red-bus && npm install && npm run build",
-  "outputDirectory": "big-red-bus/dist",
-  "installCommand": "cd big-red-bus && npm install",
-  "framework": null,
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "installCommand": "npm install",
+  "framework": "vite",
+  "cleanUrls": true,
   "rewrites": [
     {
       "source": "/(.*)",
