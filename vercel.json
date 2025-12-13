@@ -1,0 +1,12 @@
+{
+  "buildCommand": "cd big-red-bus && npm install && npm run build",
+  "outputDirectory": "big-red-bus/dist",
+  "installCommand": "cd big-red-bus && npm install",
+  "framework": null,
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
