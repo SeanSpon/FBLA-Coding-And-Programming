@@ -1,0 +1,10 @@
+{
+  "name": "fbla-big-red-bus",
+  "private": true,
+  "scripts": {
+    "dev": "cd big-red-bus && npm run dev",
+    "build": "cd big-red-bus && npm run build",
+    "preview": "cd big-red-bus && npm run preview",
+    "lint": "cd big-red-bus && npm run lint"
+  }
+}

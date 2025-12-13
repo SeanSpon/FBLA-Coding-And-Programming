@@ -1,0 +1,457 @@
+[
+  {
+    "id": "1",
+    "name": "Community Food Bank",
+    "category": "Food Assistance",
+    "city": "Louisville",
+    "state": "KY",
+    "description": "The Community Food Bank has been serving Louisville families since 1995. We provide nutritious meals, cooking classes, and nutrition education to combat food insecurity in our community.",
+    "fullDescription": "For nearly three decades, the Community Food Bank has been a cornerstone of Louisville's fight against hunger. We serve over 10,000 families annually through our food distribution programs, community kitchens, and educational initiatives. Our registered dietitians provide free nutrition counseling, and our cooking classes teach families how to prepare healthy meals on a budget. We partner with local farms to source fresh produce and believe that everyone deserves access to nutritious food.",
+    "phone": "(555) 123-4567",
+    "website": "communityfoodbank.org",
+    "address": "123 Main St, Louisville, KY 40202",
+    "rating": 4.8,
+    "reviewCount": 23,
+    "deals": [
+      {
+        "id": "deal-1-1",
+        "title": "Free Nutrition Consultation",
+        "description": "Get a free one-on-one session with our registered dietitian. Learn about meal planning, budgeting, and healthy eating habits.",
+        "code": "NUTRITION2025",
+        "expiresAt": "2026-12-31"
+      },
+      {
+        "id": "deal-1-2",
+        "title": "10% Off Cooking Class",
+        "description": "Join our community cooking workshops and learn to prepare delicious, budget-friendly meals.",
+        "code": "COOK10",
+        "expiresAt": "2026-06-30"
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "name": "Green Earth Market",
+    "category": "Local Business",
+    "city": "Lexington",
+    "state": "KY",
+    "description": "Organic grocery store supporting local farmers and sustainable agriculture. Fresh produce, artisanal goods, and eco-friendly products.",
+    "fullDescription": "Green Earth Market is more than just a grocery store - we're a community hub for sustainable living. Our shelves are stocked with organic produce from over 50 local Kentucky farms, artisanal breads and cheeses from regional producers, and eco-friendly household products. We host weekly farmers markets, composting workshops, and cooking demonstrations. Our mission is to make sustainable, healthy food accessible while supporting our local agricultural community.",
+    "phone": "(555) 234-5678",
+    "website": "greenearthmarket.com",
+    "address": "456 Elm Ave, Lexington, KY 40507",
+    "rating": 4.5,
+    "reviewCount": 47,
+    "deals": [
+      {
+        "id": "deal-2-1",
+        "title": "10% Off First Purchase",
+        "description": "New customers save 10% on their first shopping trip. Discover fresh, local, organic products.",
+        "code": "WELCOME10",
+        "expiresAt": "2026-12-31"
+      },
+      {
+        "id": "deal-2-2",
+        "title": "Free Reusable Bag",
+        "description": "Receive a complimentary branded reusable shopping bag with any purchase over $50.",
+        "code": "FREEBAG50",
+        "expiresAt": "2026-03-31"
+      }
+    ]
+  },
+  {
+    "id": "3",
+    "name": "Minds Matter Counseling Center",
+    "category": "Mental Health",
+    "city": "Louisville",
+    "state": "KY",
+    "description": "Affordable mental health counseling and support services. Sliding scale fees, support groups, and crisis intervention available.",
+    "fullDescription": "Minds Matter Counseling Center was founded on the belief that mental health care should be accessible to everyone. Our team of licensed therapists and counselors offers individual therapy, family counseling, and specialized support groups for anxiety, depression, trauma, and addiction recovery. We use a sliding scale fee structure based on income, and no one is turned away due to inability to pay. We also operate a 24/7 crisis hotline and offer teletherapy options for those who cannot visit in person.",
+    "phone": "(555) 345-6789",
+    "website": "mindsmattercounseling.org",
+    "address": "789 Oak Blvd, Louisville, KY 40203",
+    "rating": 4.9,
+    "reviewCount": 61,
+    "deals": [
+      {
+        "id": "deal-3-1",
+        "title": "First Session Free",
+        "description": "New clients receive their first counseling session at no cost. Take the first step toward better mental health.",
+        "code": "FIRSTFREE",
+        "expiresAt": "2026-12-31"
+      }
+    ]
+  },
+  {
+    "id": "4",
+    "name": "Bright Futures Learning Center",
+    "category": "Education",
+    "city": "Bowling Green",
+    "state": "KY",
+    "description": "Free tutoring and after-school programs for K-12 students. Homework help, STEM activities, and college prep support.",
+    "fullDescription": "Bright Futures Learning Center provides free educational support to students from underserved communities. Our certified teachers and volunteer tutors work with students one-on-one and in small groups to improve literacy, math skills, and academic confidence. We offer after-school homework help, SAT/ACT prep courses, college application assistance, and enrichment programs in robotics, coding, and creative writing. During summer, we run a full-day camp to prevent learning loss.",
+    "phone": "(555) 456-7890",
+    "website": "brightfutureslearning.org",
+    "address": "321 Pine St, Bowling Green, KY 42101",
+    "rating": 4.7,
+    "reviewCount": 34,
+    "deals": [
+      {
+        "id": "deal-4-1",
+        "title": "Free SAT Prep Course",
+        "description": "Enroll in our comprehensive 8-week SAT preparation course at no cost. Limited spots available.",
+        "code": "SATPREP2025",
+        "expiresAt": "2026-08-31"
+      }
+    ]
+  },
+  {
+    "id": "5",
+    "name": "Harvest Table Restaurant",
+    "category": "Local Business",
+    "city": "Louisville",
+    "state": "KY",
+    "description": "Farm-to-table restaurant featuring seasonal Kentucky cuisine. Supports local farmers and employs formerly incarcerated individuals.",
+    "fullDescription": "Harvest Table is a social enterprise restaurant that serves delicious farm-to-table cuisine while creating second chances. Our menu changes seasonally to showcase the best of Kentucky's farms and producers. We're proud to employ and train individuals re-entering society after incarceration, providing culinary skills, job readiness training, and a supportive work environment. Every meal you enjoy supports both local agriculture and workforce development. We also donate 5% of profits to anti-hunger programs.",
+    "phone": "(555) 567-8901",
+    "website": "harvesttableky.com",
+    "address": "654 Market St, Louisville, KY 40202",
+    "rating": 4.6,
+    "reviewCount": 89,
+    "deals": [
+      {
+        "id": "deal-5-1",
+        "title": "15% Off Dinner",
+        "description": "Enjoy 15% off your dinner entrees Sunday through Thursday. Not valid on holidays.",
+        "code": "DINNER15",
+        "expiresAt": "2026-12-31"
+      },
+      {
+        "id": "deal-5-2",
+        "title": "Free Dessert",
+        "description": "Complimentary seasonal dessert with purchase of two entrees.",
+        "code": "SWEETTREAT",
+        "expiresAt": "2026-12-31"
+      }
+    ]
+  },
+  {
+    "id": "6",
+    "name": "Meals on Wheels Louisville",
+    "category": "Food Assistance",
+    "city": "Louisville",
+    "state": "KY",
+    "description": "Delivering nutritious meals to homebound seniors and individuals with disabilities. Daily wellness checks included.",
+    "fullDescription": "Meals on Wheels Louisville has been serving homebound seniors and disabled adults since 1968. Our dedicated volunteers deliver more than just food - they provide a friendly face, a daily wellness check, and a connection to the outside world. We prepare and deliver over 500 hot, nutritious meals every weekday, tailored to dietary restrictions and cultural preferences. Our program reduces senior isolation, enables aging in place, and provides peace of mind to families.",
+    "phone": "(555) 678-9012",
+    "website": "mealsonwheelslou.org",
+    "address": "987 River Rd, Louisville, KY 40204",
+    "rating": 4.9,
+    "reviewCount": 42,
+    "deals": [
+      {
+        "id": "deal-6-1",
+        "title": "Free Week of Meals",
+        "description": "New clients receive their first week of meal delivery at no cost. Income verification not required.",
+        "code": "FIRSTWEEK",
+        "expiresAt": "2026-12-31"
+      }
+    ]
+  },
+  {
+    "id": "7",
+    "name": "Hope & Healing Therapy",
+    "category": "Mental Health",
+    "city": "Lexington",
+    "state": "KY",
+    "description": "Trauma-informed therapy and EMDR services. Specializing in PTSD, anxiety, and childhood trauma recovery.",
+    "fullDescription": "Hope & Healing Therapy specializes in helping individuals recover from traumatic experiences. Our licensed therapists are trained in EMDR (Eye Movement Desensitization and Reprocessing), cognitive behavioral therapy, and other evidence-based trauma treatment modalities. We create a safe, judgment-free space where clients can process difficult experiences at their own pace. We work with survivors of abuse, veterans with PTSD, first responders, and anyone struggling with the aftermath of trauma.",
+    "phone": "(555) 789-0123",
+    "website": "hopehealingtherapy.com",
+    "address": "147 Broadway, Lexington, KY 40508",
+    "rating": 4.8,
+    "reviewCount": 28,
+    "deals": [
+      {
+        "id": "deal-7-1",
+        "title": "Reduced Rate EMDR Sessions",
+        "description": "EMDR therapy sessions at $75 (regularly $150) for uninsured clients. Limited availability.",
+        "code": "EMDR75",
+        "expiresAt": "2026-12-31"
+      }
+    ]
+  },
+  {
+    "id": "8",
+    "name": "Neighborhood Builders Coalition",
+    "category": "Community Development",
+    "city": "Louisville",
+    "state": "KY",
+    "description": "Revitalizing neighborhoods through home repair, community gardens, and resident-led improvement projects.",
+    "fullDescription": "The Neighborhood Builders Coalition partners with residents to revitalize Louisville's historically underinvested neighborhoods. We coordinate volunteer teams to repair homes for elderly and disabled homeowners, install community gardens and pocket parks, organize neighborhood cleanups, and provide grants for resident-led improvement projects. Our work is guided by the principle that neighborhoods thrive when residents have the resources and power to shape their own communities. We've completed over 300 home repairs and created 25 community green spaces since 2015.",
+    "phone": "(555) 890-1234",
+    "website": "neighborhoodbuilders.org",
+    "address": "258 Jefferson St, Louisville, KY 40205",
+    "rating": 4.7,
+    "reviewCount": 19,
+    "deals": []
+  },
+  {
+    "id": "9",
+    "name": "Book Nook Cafe",
+    "category": "Local Business",
+    "city": "Bowling Green",
+    "state": "KY",
+    "description": "Independent bookstore and cafe. Hosts author events, book clubs, and literacy programs for kids.",
+    "fullDescription": "Book Nook Cafe is a beloved independent bookstore and gathering place for book lovers of all ages. We carefully curate our selection to include bestsellers, local authors, diverse voices, and hard-to-find titles. Our cozy cafe serves fair-trade coffee and locally baked pastries. We host weekly story times for children, monthly book club discussions, and regular author readings and signings. A portion of every sale goes to literacy programs in Warren County schools. We also donate books to Little Free Libraries throughout the community.",
+    "phone": "(555) 901-2345",
+    "website": "booknookcafe.com",
+    "address": "369 College St, Bowling Green, KY 42101",
+    "rating": 4.8,
+    "reviewCount": 56,
+    "deals": [
+      {
+        "id": "deal-9-1",
+        "title": "20% Off Loyalty Card",
+        "description": "Sign up for our free loyalty card and save 20% on your next book purchase.",
+        "code": "BOOKWORM20",
+        "expiresAt": "2026-12-31"
+      },
+      {
+        "id": "deal-9-2",
+        "title": "Free Coffee with Book",
+        "description": "Buy any book and receive a complimentary coffee or tea of your choice.",
+        "code": "READNCOFFEE",
+        "expiresAt": "2026-12-31"
+      }
+    ]
+  },
+  {
+    "id": "10",
+    "name": "Kidz First Pediatric Therapy",
+    "category": "Mental Health",
+    "city": "Louisville",
+    "state": "KY",
+    "description": "Play therapy and counseling for children and teens. Specializing in behavioral issues, ADHD, and family counseling.",
+    "fullDescription": "Kidz First Pediatric Therapy provides child-centered mental health services in a warm, playful environment. Our licensed child psychologists and play therapists work with children ages 3-18 who are experiencing behavioral challenges, ADHD, autism spectrum disorders, anxiety, depression, or family transitions like divorce. We use play therapy, art therapy, and age-appropriate talk therapy to help kids express their feelings and develop coping skills. We also offer parent coaching and family therapy to support the whole family system.",
+    "phone": "(555) 012-3456",
+    "website": "kidzfirsttherapy.org",
+    "address": "741 Cedar Ln, Louisville, KY 40206",
+    "rating": 4.9,
+    "reviewCount": 38,
+    "deals": [
+      {
+        "id": "deal-10-1",
+        "title": "Initial Assessment Discount",
+        "description": "Save $50 on your child's initial assessment and consultation.",
+        "code": "KIDZ50",
+        "expiresAt": "2026-12-31"
+      }
+    ]
+  },
+  {
+    "id": "11",
+    "name": "STEAM Academy",
+    "category": "Education",
+    "city": "Louisville",
+    "state": "KY",
+    "description": "Hands-on science, technology, engineering, arts, and math programs for underserved youth ages 8-18.",
+    "fullDescription": "STEAM Academy makes cutting-edge learning accessible to all kids, regardless of family income. Our after-school and summer programs teach coding, robotics, 3D printing, digital art, and engineering through hands-on projects. Students build robots, design video games, launch model rockets, and create digital animations. We provide all equipment and supplies free of charge. Our instructors are professionals from tech companies, universities, and engineering firms who volunteer their expertise. Alumni have gone on to win state science fairs and earn college scholarships in STEM fields.",
+    "phone": "(555) 123-4560",
+    "website": "steamacademyky.org",
+    "address": "852 Tech Blvd, Louisville, KY 40207",
+    "rating": 4.8,
+    "reviewCount": 31,
+    "deals": [
+      {
+        "id": "deal-11-1",
+        "title": "Free Summer Camp Week",
+        "description": "First-time participants receive one free week of summer STEAM camp. All materials included.",
+        "code": "SUMMERFREE",
+        "expiresAt": "2026-07-31"
+      }
+    ]
+  },
+  {
+    "id": "12",
+    "name": "Pedal Power Bike Shop",
+    "category": "Local Business",
+    "city": "Lexington",
+    "state": "KY",
+    "description": "Community bike shop teaching repair skills to youth. Refurbishes donated bikes for low-income families.",
+    "fullDescription": "Pedal Power Bike Shop is a nonprofit bike shop with a mission. We accept donated bicycles, refurbish them in our shop, and sell them at affordable prices or give them away to families who need transportation. Our Youth Mechanics Program teaches teenagers bike repair and maintenance skills, providing job training and after-school employment. We also offer free basic repairs to anyone who can't afford them, host community bike rides, and advocate for better cycling infrastructure in Lexington. Since 2012, we've put over 3,000 bikes back on the road.",
+    "phone": "(555) 234-5601",
+    "website": "pedalpowerlexington.org",
+    "address": "963 Lime St, Lexington, KY 40509",
+    "rating": 4.6,
+    "reviewCount": 44,
+    "deals": [
+      {
+        "id": "deal-12-1",
+        "title": "$25 Off Refurbished Bike",
+        "description": "Save $25 on any refurbished bicycle. Support our youth employment program.",
+        "code": "BIKE25",
+        "expiresAt": "2026-12-31"
+      },
+      {
+        "id": "deal-12-2",
+        "title": "Free Tune-Up",
+        "description": "Bring in your bike for a complimentary safety check and basic tune-up.",
+        "code": "TUNEUP",
+        "expiresAt": "2026-12-31"
+      }
+    ]
+  },
+  {
+    "id": "13",
+    "name": "Community Crisis Center",
+    "category": "Mental Health",
+    "city": "Bowling Green",
+    "state": "KY",
+    "description": "24/7 crisis hotline, emergency counseling, and support for individuals experiencing mental health emergencies.",
+    "fullDescription": "The Community Crisis Center is here when you need us most. Our 24/7 hotline is staffed by trained crisis counselors who provide immediate support, safety planning, and connections to resources. We offer walk-in crisis counseling services, short-term case management, and warm referrals to ongoing mental health treatment. Our services are completely free and confidential. We also provide crisis intervention training to schools, businesses, and community organizations. No one facing a mental health crisis should face it alone - we're here to help.",
+    "phone": "(555) 345-6012",
+    "website": "crisiscenterbg.org",
+    "address": "159 Hope Ave, Bowling Green, KY 42102",
+    "rating": 4.9,
+    "reviewCount": 27,
+    "deals": []
+  },
+  {
+    "id": "14",
+    "name": "Second Harvest Food Pantry",
+    "category": "Food Assistance",
+    "city": "Lexington",
+    "state": "KY",
+    "description": "Emergency food assistance and nutrition education. Open to all in need, no questions asked.",
+    "fullDescription": "Second Harvest Food Pantry operates on a simple principle: if you're hungry, we'll feed you - no income verification, no paperwork, no judgment. We're open four days a week and provide a week's worth of groceries including fresh produce, dairy, proteins, and pantry staples. Our nutrition educators teach cooking classes focused on healthy eating on a budget. We also connect clients with SNAP enrollment assistance, job training programs, and other social services. We source food from the Kentucky Food Bank, local farms, and grocery store donation partners.",
+    "phone": "(555) 456-7012",
+    "website": "secondharvestlex.org",
+    "address": "753 Harvest Way, Lexington, KY 40510",
+    "rating": 4.7,
+    "reviewCount": 35,
+    "deals": []
+  },
+  {
+    "id": "15",
+    "name": "Tech Futures Workforce Center",
+    "category": "Community Development",
+    "city": "Lexington",
+    "state": "KY",
+    "description": "Free tech training and job placement services. Coding bootcamps, IT certifications, and career counseling.",
+    "fullDescription": "Tech Futures Workforce Center prepares individuals for careers in Kentucky's growing technology sector. We offer free, intensive training programs in web development, cybersecurity, data analysis, and IT support. Our 12-week bootcamps provide hands-on experience with industry-standard tools and real-world projects. We partner with local tech companies for internships and hiring pipelines. Services include resume building, interview prep, and ongoing career coaching. Our graduates have been hired by companies like Lexmark, Amazon, and dozens of local startups, earning an average starting salary of $55,000.",
+    "phone": "(555) 567-8012",
+    "website": "techfuturesworkforce.org",
+    "address": "486 Innovation Dr, Lexington, KY 40511",
+    "rating": 4.8,
+    "reviewCount": 52,
+    "deals": [
+      {
+        "id": "deal-15-1",
+        "title": "Free Career Assessment",
+        "description": "Receive a complimentary tech career assessment and personalized training plan.",
+        "code": "CAREERSTART",
+        "expiresAt": "2026-12-31"
+      }
+    ]
+  },
+  {
+    "id": "16",
+    "name": "Little Scholars Montessori",
+    "category": "Education",
+    "city": "Lexington",
+    "state": "KY",
+    "description": "Montessori preschool with scholarship program. Child-centered learning for ages 2-6.",
+    "fullDescription": "Little Scholars Montessori provides high-quality early childhood education using the Montessori method. Our classrooms are carefully prepared environments where children learn through hands-on exploration, self-directed activity, and collaborative play. Our certified Montessori teachers guide each child's individual development in practical life skills, sensorial exploration, language, mathematics, and cultural studies. We believe every child deserves access to excellent early education, so we offer need-based scholarships covering up to 100% of tuition. Our graduates consistently exceed kindergarten readiness benchmarks.",
+    "phone": "(555) 678-9123",
+    "website": "littlescholarsmontessori.com",
+    "address": "147 Learning Ln, Lexington, KY 40512",
+    "rating": 4.9,
+    "reviewCount": 41,
+    "deals": [
+      {
+        "id": "deal-16-1",
+        "title": "First Month Free",
+        "description": "New families receive their first month of tuition free with enrollment.",
+        "code": "FIRSTMONTH",
+        "expiresAt": "2026-12-31"
+      }
+    ]
+  },
+  {
+    "id": "17",
+    "name": "Artisan Collective Gallery",
+    "category": "Local Business",
+    "city": "Louisville",
+    "state": "KY",
+    "description": "Cooperative art gallery featuring local artists. Offers art classes and community workshops.",
+    "fullDescription": "Artisan Collective Gallery is an artist-owned cooperative showcasing the work of over 40 Kentucky artists. Our gallery features paintings, sculpture, ceramics, jewelry, textiles, and photography - all created by local makers. Artists keep 80% of sales proceeds, far more than traditional galleries. We host monthly First Friday receptions, offer beginner-friendly art classes in various media, and provide free studio space for emerging artists who can't afford their own. Our mission is to make art accessible as both creator and consumer, strengthening Louisville's creative economy.",
+    "phone": "(555) 789-0124",
+    "website": "artisancollectiveky.com",
+    "address": "357 Gallery Row, Louisville, KY 40208",
+    "rating": 4.7,
+    "reviewCount": 33,
+    "deals": [
+      {
+        "id": "deal-17-1",
+        "title": "25% Off Art Class",
+        "description": "Save 25% on your first art class or workshop. All skill levels welcome.",
+        "code": "ARTCLASS25",
+        "expiresAt": "2026-12-31"
+      }
+    ]
+  },
+  {
+    "id": "18",
+    "name": "Homeward Bound Housing",
+    "category": "Community Development",
+    "city": "Bowling Green",
+    "state": "KY",
+    "description": "Affordable housing development and homeownership counseling. Building homes, building futures.",
+    "fullDescription": "Homeward Bound Housing works to make homeownership achievable for low-income families. We build and sell affordable homes at cost, provide zero-interest mortgages to qualified buyers, and offer comprehensive homeownership education covering budgeting, home maintenance, and building credit. Our homes are built to high energy-efficiency standards, saving owners money on utilities. We also assist existing homeowners with critical repairs through our Home Preservation Program. Since 1999, we've helped 200 families achieve the dream of homeownership.",
+    "phone": "(555) 890-1235",
+    "website": "homewardboundhousing.org",
+    "address": "741 Builder St, Bowling Green, KY 42103",
+    "rating": 4.8,
+    "reviewCount": 22,
+    "deals": []
+  },
+  {
+    "id": "19",
+    "name": "Sunrise Bakery",
+    "category": "Local Business",
+    "city": "Bowling Green",
+    "state": "KY",
+    "description": "Bakery employing refugees and immigrants. Fresh bread, pastries, and international specialties.",
+    "fullDescription": "Sunrise Bakery is more than a place to get delicious bread - it's a bridge to new beginnings. We employ refugees and immigrants, providing job training, English language support, and a pathway to self-sufficiency. Our bakers bring recipes from their home countries, so you'll find everything from traditional French baguettes to Middle Eastern flatbreads to Latin American sweet breads. We also partner with restaurants and grocery stores to distribute our products widely. Every purchase supports families rebuilding their lives and enriches our community with diverse flavors and cultures.",
+    "phone": "(555) 901-2346",
+    "website": "sunrisebakery.org",
+    "address": "852 Dawn Ave, Bowling Green, KY 42104",
+    "rating": 4.9,
+    "reviewCount": 68,
+    "deals": [
+      {
+        "id": "deal-19-1",
+        "title": "Buy 2 Get 1 Free",
+        "description": "Purchase any two loaves of bread and receive a third loaf of equal or lesser value free.",
+        "code": "BREAD3FOR2",
+        "expiresAt": "2026-12-31"
+      }
+    ]
+  },
+  {
+    "id": "20",
+    "name": "Clean Water Initiative",
+    "category": "Community Development",
+    "city": "Louisville",
+    "state": "KY",
+    "description": "Environmental advocacy and waterway cleanup. Protecting Kentucky's rivers and streams.",
+    "fullDescription": "The Clean Water Initiative mobilizes volunteers to protect and restore Kentucky's waterways. We organize monthly river cleanups removing trash and invasive species, test water quality at over 100 sites across the state, and advocate for stronger environmental protections. Our education programs teach students about watershed ecology and the importance of clean water. We partner with local governments and businesses to implement green infrastructure projects that reduce pollution runoff. Thanks to our volunteers, we've removed over 50 tons of trash from Kentucky rivers and planted 10,000 native trees along stream banks.",
+    "phone": "(555) 012-3457",
+    "website": "cleanwaterky.org",
+    "address": "963 River St, Louisville, KY 40209",
+    "rating": 4.7,
+    "reviewCount": 29,
+    "deals": []
+  }
+]
