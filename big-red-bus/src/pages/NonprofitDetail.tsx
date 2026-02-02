@@ -272,9 +272,9 @@ export default function NonprofitDetail() {
             </Badge>
           </h2>
           <div className="grid md:grid-cols-2 gap-6">
-            {organization.deals.map((deal) => (
+            {organization.deals.map((deal, index) => (
               <DealCard 
-                key={deal.id ?? Math.random()} 
+                key={deal.id ?? `deal-${index}`} 
                 deal={deal} 
                 organizationId={organization.id}
               />

@@ -96,19 +96,15 @@ export function sanitizeInput(input: string): string {
     return '';
   }
 
-  // Remove any HTML tags and script content
+  // Strip HTML tags and decode HTML entities safely
   const temp = document.createElement('div');
-  temp.textContent = input;
-  let sanitized = temp.innerHTML;
-
-  // Additional: Remove any remaining suspicious patterns
-  sanitized = sanitized
-    .replace(/<script[^>]*>.*?<\/script>/gi, '') // Remove scripts
-    .replace(/on\w+\s*=\s*["'][^"']*["']/gi, '') // Remove event handlers
+  temp.innerHTML = input;
+  const textContent = temp.textContent || temp.innerText || '';
+  
+  // Remove any remaining suspicious patterns
+  return textContent
     .replace(/javascript:/gi, '') // Remove javascript: protocol
     .trim();
-
-  return sanitized;
 }
 
 /**

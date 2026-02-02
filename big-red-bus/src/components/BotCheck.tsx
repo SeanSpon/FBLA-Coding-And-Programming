@@ -30,7 +30,6 @@ export default function BotCheck({ onVerify, onCancel }: BotCheckProps) {
   const [answer, setAnswer] = useState("");
   const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  const [, setAttemptCount] = useState(0);
   const [rateLimited, setRateLimited] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const attemptTimestampsRef = useRef<number[]>([]);
@@ -88,7 +87,6 @@ export default function BotCheck({ onVerify, onCancel }: BotCheckProps) {
 
     // Record this attempt timestamp
     attemptTimestampsRef.current.push(Date.now());
-    setAttemptCount(prev => prev + 1);
 
     const correctAnswer = num1 + num2;
 

@@ -50,13 +50,12 @@ export default function Pagination({ page, pageSize, total, onPageChange }: Pagi
 
   /**
    * Handle page change with validation
-   * Ensures we never navigate to invalid pages
+   * Ensures we never navigate to invalid pages and keeps parent state synchronized
    */
   const handlePageChange = (newPage: number) => {
     const validPage = Math.max(1, Math.min(newPage, totalPages));
-    if (validPage !== currentPage) {
-      onPageChange(validPage);
-    }
+    // Always call onPageChange to ensure parent state stays synchronized
+    onPageChange(validPage);
   };
 
   return (
