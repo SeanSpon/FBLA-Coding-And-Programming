@@ -110,7 +110,6 @@ export default function Header() {
                       : "text-gray-700 hover:bg-red-50 hover:text-red-600"
                   )
                 }
-                aria-current={({ isActive }) => isActive ? "page" : undefined}
               >
                 {item.label}
               </NavLink>

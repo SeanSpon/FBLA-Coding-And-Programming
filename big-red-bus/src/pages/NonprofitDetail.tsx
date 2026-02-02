@@ -10,8 +10,7 @@ import {
   Phone, 
   Globe, 
   Star, 
-  Heart,
-  AlertCircle
+  Heart
 } from "lucide-react";
 import organizationsData from "@/data/organizations.json";
 import type { Organization } from "@/types/organization";
@@ -38,6 +37,12 @@ const organizations = organizationsData as Organization[];
  */
 export default function NonprofitDetail() {
   const { id } = useParams<{ id: string }>();
+  
+  // Hooks must be called unconditionally at the top
+  const { isFavorite, toggleFavorite } = useFavorites();
+  const { reviews, addReview, getAverageRating } = useReviews(id ?? "");
+  const [showReviewForm, setShowReviewForm] = useState(false);
+  const [showAllReviews, setShowAllReviews] = useState(false);
   
   // DEFENSIVE: Validate ID parameter exists
   if (!id) {
@@ -74,11 +79,6 @@ export default function NonprofitDetail() {
       </div>
     );
   }
-
-  const { isFavorite, toggleFavorite } = useFavorites();
-  const { reviews, addReview, getAverageRating } = useReviews(id);
-  const [showReviewForm, setShowReviewForm] = useState(false);
-  const [showAllReviews, setShowAllReviews] = useState(false);
 
   const favorited = isFavorite(organization.id);
   const userReviews = reviews ?? [];

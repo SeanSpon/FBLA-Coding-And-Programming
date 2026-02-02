@@ -30,7 +30,7 @@ export default function BotCheck({ onVerify, onCancel }: BotCheckProps) {
   const [answer, setAnswer] = useState("");
   const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  const [attemptCount, setAttemptCount] = useState(0);
+  const [, setAttemptCount] = useState(0);
   const [rateLimited, setRateLimited] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const attemptTimestampsRef = useRef<number[]>([]);

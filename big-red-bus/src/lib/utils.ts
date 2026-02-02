@@ -6,6 +6,7 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 // Debounce function with TypeScript support
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function debounce<T extends (...args: any[]) => any>(
   func: T,
   wait: number
@@ -43,7 +44,7 @@ export function sortOrgs<T extends { name: string; rating?: number; city?: strin
 }
 
 // Query string utilities
-export function toQueryString(params: Record<string, any>): string {
+export function toQueryString(params: Record<string, unknown>): string {
   const searchParams = new URLSearchParams();
   Object.entries(params).forEach(([key, value]) => {
     if (value !== undefined && value !== null && value !== "" && !(Array.isArray(value) && value.length === 0)) {
@@ -57,9 +58,9 @@ export function toQueryString(params: Record<string, any>): string {
   return searchParams.toString();
 }
 
-export function fromQueryString(search: string): Record<string, any> {
+export function fromQueryString(search: string): Record<string, unknown> {
   const params = new URLSearchParams(search);
-  const result: Record<string, any> = {};
+  const result: Record<string, unknown> = {};
   
   params.forEach((value, key) => {
     if (value.includes(",")) {
@@ -195,7 +196,7 @@ export function validateAuthorName(name: string): { isValid: boolean; error?: st
  * @param rating - Rating value to validate
  * @returns Object with isValid boolean and error message if invalid
  */
-export function validateRating(rating: any): { isValid: boolean; error?: string } {
+export function validateRating(rating: unknown): { isValid: boolean; error?: string } {
   const num = Number(rating);
 
   if (isNaN(num)) {
