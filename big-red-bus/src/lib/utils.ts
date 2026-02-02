@@ -101,9 +101,11 @@ export function sanitizeInput(input: string): string {
   temp.innerHTML = input;
   const textContent = temp.textContent || temp.innerText || '';
   
-  // Remove any remaining suspicious patterns
+  // Remove any remaining suspicious patterns and protocols
   return textContent
     .replace(/javascript:/gi, '') // Remove javascript: protocol
+    .replace(/data:/gi, '')       // Remove data: protocol
+    .replace(/vbscript:/gi, '')   // Remove vbscript: protocol
     .trim();
 }
 
