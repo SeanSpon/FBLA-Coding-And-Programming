@@ -1,160 +1,152 @@
-# Big Red Bus - Community Impact Finder
-**FBLA Coding And Programming 2025-2026**
+# 🚌 Big Red Bus
 
-## Overview
+### FBLA Coding & Programming 2025–2026
 
-Big Red Bus is a web platform connecting people with nonprofit organizations and community-focused businesses making a positive impact. The application helps users discover, support, and engage with local organizations through features like search, reviews, deals, and favorites.
+**Student:** Sean McCulloch  
+**School:** Trinity High School  
+**Event:** FBLA Coding & Programming (High School)  
+**Topic:** *Byte-Sized Business Boost*
 
-### Key Features
+---
 
-✅ **Search & Filter** - Find organizations by name, category, city, and rating  
-✅ **User Reviews** - Leave ratings and reviews for organizations (with bot verification)  
-✅ **Favorites** - Save your favorite organizations for quick access  
-✅ **Special Deals** - Discover and claim exclusive deals from community businesses  
-✅ **Detailed Profiles** - View comprehensive organization information  
-✅ **Responsive Design** - Beautiful, accessible UI that works on all devices
+## 📌 Project Overview
 
-## Tech Stack
+**Big Red Bus** is a web-based software application designed to help users **discover, evaluate, and support local businesses and community organizations**.  
+The application allows users to search organizations, filter results, leave reviews, save favorites, and discover exclusive deals.
 
-**Frontend:**
-- React 19 + TypeScript - Modern, type-safe UI development
-- Vite - Fast build tooling and dev server
-- React Router v7 - Client-side routing
-- Tailwind CSS 4 - Utility-first styling
-- shadcn/ui - High-quality, accessible components
-- Framer Motion - Smooth animations
-- Lucide React - Beautiful icons
+This project was created for the **FBLA Coding & Programming 2025–2026** competition and fully addresses the **Byte-Sized Business Boost** prompt.
 
-**State Management:**
-- localStorage - Client-side persistence for favorites, reviews, claimed deals
-- React Hooks - Modern state management patterns
+**🌐 Live Demo:** [https://big-red-bmcupx7f6-zach-robards-projects.vercel.app/directory/2](https://big-red-bmcupx7f6-zach-robards-projects.vercel.app/directory/2)  
+*Note: Deployed via Vercel for demonstration purposes*
 
-**Development Tools:**
-- ESLint - Code quality
-- TypeScript - Type safety throughout
+---
 
-## Quick Start
+## 🎯 Problem Statement
+
+Small local businesses and community organizations often struggle with visibility.  
+Users lack simple, organized tools to compare organizations, identify trustworthy reviews, and discover special offers in their area.
+
+---
+
+## 💡 Solution
+
+Big Red Bus solves this problem by providing:
+
+* A **searchable directory** of organizations
+* **Advanced filtering and sorting** options
+* A **review and rating system** with bot verification
+* A **favorites system** to bookmark organizations
+* **Exclusive deals and coupons** to encourage support
+
+The application focuses on **clean program logic**, **user interaction**, and **data validation**, rather than static content.
+
+---
+
+## ✅ Key Features
+
+* 🔍 **Search & Filter**
+  * Search by name, category, city, and rating
+  * Sort results by rating and relevance
+
+* ⭐ **Reviews & Ratings**
+  * Users can submit reviews with 1–5 star ratings
+  * Input validation ensures clean data
+
+* ❤️ **Favorites**
+  * Save and bookmark organizations
+  * Persistent storage using localStorage
+
+* 💰 **Deals & Coupons**
+  * Display exclusive deals from organizations
+  * Bot verification prevents spam submissions
+
+* 🤖 **Bot Protection**
+  * Simple CAPTCHA system to prevent automated activity
+
+* 📱 **Responsive Design**
+  * Works on desktop, tablet, and mobile devices
+
+---
+
+## 🛠️ Technology Stack
+
+* **Frontend:** React, TypeScript
+* **Styling:** Tailwind CSS
+* **Routing:** React Router
+* **Data Storage:** JSON + localStorage
+* **Build Tool:** Vite
+
+---
+
+## 🧠 Programming Concepts Demonstrated
+
+* Modular component-based architecture
+* Custom React hooks for shared logic
+* Input validation and sanitization
+* State management and data persistence
+* Conditional rendering and pagination
+* Defensive programming and error handling
+
+---
+
+## ▶️ How to Run the Project
 
 ### Prerequisites
-- Node.js 18+ and npm
+
+* Node.js (v16 or higher)
+* npm
 
 ### Installation
 
 ```bash
-# Clone the repository
-git clone https://github.com/your-username/FBLA-Coding-And-Programming.git
-cd FBLA-Coding-And-Programming
-
-# Install dependencies
-cd big-red-bus
+git clone https://github.com/SeanSpon/FBLA-Coding-And-Programming.git
+cd FBLA-Coding-And-Programming/big-red-bus
 npm install
-
-# Start the development server
 npm run dev
 ```
 
-The web app will start on `http://localhost:5173`.
-
-### Available Scripts
-
-**Root level:**
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run preview` - Preview production build
-- `npm run lint` - Run ESLint
-
-## Project Structure
+The application will run locally at:
 
 ```
-FBLA-Coding-And-Programming/
-├── big-red-bus/                 # Main web application
-│   ├── src/
-│   │   ├── components/          # React components
-│   │   │   ├── ui/             # shadcn/ui components
-│   │   │   ├── nonprofits/     # Organization cards, filters
-│   │   │   ├── DealCard.tsx
-│   │   │   ├── ReviewForm.tsx
-│   │   │   └── BotCheck.tsx
-│   │   ├── pages/              # Page components
-│   │   │   ├── Home.tsx
-│   │   │   ├── Nonprofits.tsx
-│   │   │   ├── NonprofitDetail.tsx
-│   │   │   ├── About.tsx
-│   │   │   └── Contact.tsx
-│   │   ├── hooks/              # Custom React hooks
-│   │   │   ├── useFavorites.ts
-│   │   │   ├── useReviews.ts
-│   │   │   └── useClaimedDeals.ts
-│   │   ├── data/
-│   │   │   └── organizations.json  # Organization data
-│   │   ├── lib/
-│   │   │   ├── utils.ts
-│   │   │   ├── format.ts
-│   │   │   └── data/deals.ts
-│   │   └── router.tsx
-│   └── package.json
-└── docs/                        # Documentation
-    ├── ARCHITECTURE.md
-    ├── REQUIREMENTS.md
-    ├── PRESENTATION.md
-    └── FBLA_COMPLIANCE.md
+http://localhost:5173
 ```
-
-## Data Storage
-
-All user data (favorites, reviews, claimed deals) is stored locally in the browser using localStorage. This approach:
-- ✅ Works without a backend/database
-- ✅ Respects user privacy
-- ✅ Provides personalized experience
-- ⚠️ Data is device-specific
-
-## Documentation
-
-- [`docs/REQUIREMENTS.md`](docs/REQUIREMENTS.md) — FBLA requirements mapping
-- [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) — Technical architecture
-- [`docs/PRESENTATION.md`](docs/PRESENTATION.md) — Presentation guide
-- [`docs/FBLA_COMPLIANCE.md`](docs/FBLA_COMPLIANCE.md) — Competition compliance
-
-## FBLA Competition Requirements
-
-This project fulfills all requirements of the FBLA Coding & Programming competition:
-
-1. ✅ Tool helps users discover local businesses
-2. ✅ Businesses can be sorted by category
-3. ✅ Users can leave reviews and ratings
-4. ✅ Users can save/bookmark favorites
-5. ✅ Special deals and coupons are displayed
-6. ✅ Bot verification is implemented
-
-## Development
-
-### Running in Development
-
-```bash
-cd big-red-bus
-npm run dev
-```
-
-### Building for Production
-
-```bash
-cd big-red-bus
-npm run build
-```
-
-The production build will be in `big-red-bus/dist/`.
-
-### Linting
-
-```bash
-cd big-red-bus
-npm run lint
-```
-
-## License
-
-Built for educational purposes as part of FBLA Coding & Programming 2025-2026.
 
 ---
 
-**Ready to make a difference in your community? Start exploring! 🚍**
+## 🏁 FBLA Alignment
+
+This project fulfills the **FBLA Coding & Programming 2025–2026** topic requirements by:
+
+* Helping users **discover and support local businesses**
+* Allowing users to **leave reviews and ratings**
+* Providing **sorting and filtering functionality**
+* Enabling users to **save favorites**
+* Displaying **special deals and coupons**
+* Implementing **bot verification** to prevent spam
+
+---
+
+## 🚀 Future Enhancements
+
+* User accounts and authentication
+* Server-side database storage
+* Business verification workflow
+* Advanced recommendation system
+
+---
+
+## 📄 Notes for Judges
+
+* This project is a **client-side software application** implemented as a web-based interactive interface
+* All code is original and written specifically for the FBLA competition
+* No templates or pre-built website generators were used
+
+---
+
+## 👤 Author
+
+**Sean McCulloch**  
+Trinity High School  
+FBLA Coding & Programming 2025–2026
+
+---
