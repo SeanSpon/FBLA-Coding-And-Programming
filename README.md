@@ -16,7 +16,8 @@ The application allows users to search organizations, filter results, leave revi
 
 This project was created for the **FBLA Coding & Programming 2025–2026** competition and fully addresses the **Byte-Sized Business Boost** prompt.
 
-**🌐 Live Demo:** [https://big-red-bmcupx7f6-zach-robards-projects.vercel.app/directory/2](https://big-red-bmcupx7f6-zach-robards-projects.vercel.app/directory/2)
+**🌐 Live Demo:** [https://big-red-bmcupx7f6-zach-robards-projects.vercel.app/directory/2](https://big-red-bmcupx7f6-zach-robards-projects.vercel.app/directory/2)  
+*Note: Deployed via Vercel for demonstration purposes*
 
 ---
 
